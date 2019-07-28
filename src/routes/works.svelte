@@ -12,6 +12,10 @@
   p {margin: 0}
 </style>
 
+<svelte:head>
+  <title>Works</title>
+</svelte:head>
+
 <div class="text">
   <h2>作品一覧</h2>
   <ul>
