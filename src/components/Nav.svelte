@@ -69,7 +69,7 @@
   <nav>
     <ul>
       <li>
-        <a class={segment === 'introduction' ? 'selected' : ''} href="introduction">introduction</a>
+        <a class={segment === undefined ? 'selected' : ''} href=".">introduction</a>
       </li>
       <li>
         <a class={segment === 'works' ? 'selected' : ''} href="works">works</a>
