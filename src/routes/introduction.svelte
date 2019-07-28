@@ -1,0 +1,91 @@
+<script>
+
+</script>
+
+<style>
+  * {
+    margin: 0;
+  }
+  .text {
+    float: left;
+    background-color: white;
+    margin-bottom: 32px;
+  }
+  img {
+    width: 40%;
+  }
+  h1 {
+    text-align: center;
+    padding-bottom: 16px;
+    color: white;
+    background-color: #00e676;
+  }
+  h2 {
+    text-align: center;
+    padding: 8px 0px;
+    color: white;
+    background-color: #69f0ae;
+  }
+  h3 {
+    text-align: center;
+    padding: 4px 0px;
+    background-color: #ccff90;
+  }
+  ul {
+    color: black;
+    background-color: white;
+  }
+</style>
+
+<svelte:head>
+  <title>Introduction</title>
+</svelte:head>
+
+<h1>mazrean</h1>
+
+<img src="icon.jpg" alt="アイコン" />
+<div class="text">
+  <div>
+    <h2>基本情報</h2>
+    <ul>
+      <li>
+        所属:
+        <a href="https://trap.jp/">デジタル創作同好会traP</a>
+        ,折り紙同好会
+      </li>
+      <li>好きなもの:折り紙</li>
+    </ul>
+  </div>
+  <div>
+    <h2>プログラミング</h2>
+    <h3>使える言語</h3>
+    <ul>
+      <li>Go</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>C#</li>
+    </ul>
+    <h3>使えるフレームワーク・ライブラリ</h3>
+    <ul>
+      <li>
+        Svelte
+        <p>このポートフォリオはSvelteで作られています。</p>
+      </li>
+      <li>
+        Vue.js
+        <p>
+          <a href="https://mazrean-portfolio.netlify.com/#/">
+            一つ前のポートフォリオ
+          </a>
+          はVue.jsで作られています。
+        </p>
+      </li>
+      <li>React</li>
+      <li>
+        ReactNative
+        <p>traP内のプロジェクトで使用中。</p>
+      </li>
+    </ul>
+  </div>
+</div>
