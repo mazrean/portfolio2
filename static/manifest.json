@@ -1,9 +1,9 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
-	"display": "minimal-ui",
+	"background_color": "#00e676",
+	"theme_color": "#00e676",
+	"name": "Mazrean`s portfolio2",
+	"short_name": "MazPort2",
+	"display": "standalone",
 	"start_url": "/",
 	"icons": [
 		{
