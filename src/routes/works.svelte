@@ -2,11 +2,8 @@
   h2 {
     text-align: center;
     padding: 8px 0px;
-    color: white;
-    background-color: #00e676;
   }
   .text {
-    background-color: white;
     margin-bottom: 32px;
   }
   p {margin: 0}

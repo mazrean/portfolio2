@@ -3,33 +3,19 @@
     margin: 0;
   }
   .text {
-    float: left;
-    background-color: white;
     margin-bottom: 32px;
-  }
-  img {
-    width: 40%;
   }
   h1 {
     text-align: center;
     padding-bottom: 16px;
-    color: white;
-    background-color: #00e676;
   }
   h2 {
     text-align: center;
     padding: 8px 0px;
-    color: white;
-    background-color: #69f0ae;
   }
   h3 {
     text-align: center;
     padding: 4px 0px;
-    background-color: #ccff90;
-  }
-  ul {
-    color: black;
-    background-color: white;
   }
 </style>
 
@@ -39,7 +25,6 @@
 
 <h1>mazrean</h1>
 
-<img src="icon.jpg" alt="アイコン" />
 <div class="text">
   <div>
     <h2>基本情報</h2>
