@@ -1,72 +1,88 @@
 <style>
   * {
-    margin: 0;
+	margin: 0;
+	padding: 0;
   }
-  .text {
-    margin-bottom: 32px;
+  div {
+	  width: 80%;
+	  margin: 0 auto;
   }
-  h1 {
-    text-align: center;
-    padding-bottom: 16px;
+  .tag {
+	  display: inline-block;
+	  width: 64px;
   }
-  h2 {
-    text-align: center;
-    padding: 8px 0px;
+  .content {
+	  display: inline-block;
   }
-  h3 {
-    text-align: center;
-    padding: 4px 0px;
+  .box {
+	  display: flex;
+	  align-items: flex-start;
+	  width: 100%;
+  }
+  span {
+	  margin-right: 10px;
+  }
+  @media screen and (max-width: 640px) {
+	  div {
+		  width: 100%;
+	  }
   }
 </style>
+
+<script>
+	import Basic from "../components/Basic.svelte"
+	const today = new Date()
+	const grade = today.getMonth()>=4?today.getFullYear()-2018:today.getFullYear()-2019
+	const strGrade = grade>4?`修士${grade-4}年`:`学部${grade}年`
+</script>
 
 <svelte:head>
   <title>Introduction</title>
 </svelte:head>
 
-<h1>mazrean</h1>
-
-<div class="text">
-  <div>
-    <h2>基本情報</h2>
-    <ul>
-      <li>
-        所属:
-        <a href="https://trap.jp/">デジタル創作同好会traP</a>
-        ,折り紙同好会
-      </li>
-      <li>好きなもの:折り紙</li>
-    </ul>
-  </div>
-  <div>
-    <h2>プログラミング</h2>
-    <h3>使える言語</h3>
-    <ul>
-      <li>Go</li>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>C#</li>
-    </ul>
-    <h3>使えるフレームワーク・ライブラリ</h3>
-    <ul>
-      <li>
-        Svelte
-        <p>このポートフォリオはSvelteで作られています。</p>
-      </li>
-      <li>
-        Vue.js
-        <p>
-          <a href="https://mazrean-portfolio.netlify.com/#/">
-            一つ前のポートフォリオ
-          </a>
-          はVue.jsで作られています。
-        </p>
-      </li>
-      <li>React</li>
-      <li>
-        ReactNative
-        <p>traP内のプロジェクトで使用中。</p>
-      </li>
-    </ul>
-  </div>
+<div>
+	<Basic title="Profile">
+		<li>
+			<div class="box">
+				<span class="tag">HN</span>
+				<span>:</span>
+				<span class="content">mazrean</span>
+			</div>
+		</li>
+		<li>
+			<div class="box">
+				<span class="tag">所属</span>
+				<span>:</span>
+				<span class="content">東京工業大学{strGrade}</span>
+			</div>
+		</li>
+		<li>
+			<div class="box">
+				<span class="tag">サークル</span>
+				<span>:</span>
+				<span class="content"><a href="https://trap.jp/">デジタル創作同好会traP</a>,折り紙同好会</span>
+			</div>
+		</li>
+	</Basic>
+	<Basic title="Skills" discription="上にあるものほど得意です。">
+		<li>Golang</li>
+		<li>MySQL,docker</li>
+		<li>HTML/CSS/JavaScript</li>
+		<li>Svelte/React.js/Vue.js</li>
+		<li>React Native</li>
+		<li>C#/F#</li>
+	</Basic>
+	<Basic title="Interest">
+		<li>web系(とくにサーバーサイド)</li>
+		<li>低レイヤ系(OS)</li>
+	</Basic>
+	<Basic title="Favorite">
+		<li>Golang</li>
+		<li>折り紙</li>
+	</Basic>
+	<Basic title="Link">
+		<li><a href="https://github.com/mazrean">Github</a></li>
+		<li><a href="https://atcoder.jp/users/mazrean">AtCoder</a></li>
+		<li><a href="https://trap.jp/author/mazrean/">所属しているサークルtraPのブログ</a></li>
+	</Basic>
 </div>
