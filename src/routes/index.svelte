@@ -64,6 +64,12 @@
 			</div>
 		</li>
 	</Basic>
+	<Basic title="Performance">
+		<li>9月7日(土)にISUCON9予選に参加しました</li>
+		<li>ICTSC予選に出場し、二次予選を11位で突破しました</li>
+		<li>インターンでN-ISUCONに出場し、4位でした</li>
+		<li>ICTSC本戦に出場し、9位でした</li>
+	</Basic>
 	<Basic title="Skills" discription="上にあるものほど得意です。">
 		<li>Golang</li>
 		<li>MySQL,docker</li>
