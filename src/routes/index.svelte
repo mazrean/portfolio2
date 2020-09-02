@@ -1,12 +1,4 @@
 <style>
-  * {
-	margin: 0;
-	padding: 0;
-  }
-  div {
-	  width: 80%;
-	  margin: 0 auto;
-  }
   .tag {
 	  display: inline-block;
 	  width: 64px;
@@ -22,14 +14,10 @@
   span {
 	  margin-right: 10px;
   }
-  @media screen and (max-width: 640px) {
-	  div {
-		  width: 100%;
-	  }
-  }
 </style>
 
-<script>
+<script lang="ts">
+	// @ts-check
 	import Basic from "../components/Basic.svelte"
 	const today = new Date()
 	const grade = today.getMonth()>=4?today.getFullYear()-2018:today.getFullYear()-2019

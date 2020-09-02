@@ -6,12 +6,17 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+import autoPreprocess from 'svelte-preprocess';
+const preprocess = autoPreprocess();
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 const dedupe = importee => importee === 'svelte' || importee.startsWith('svelte/');
 
 export default {
@@ -26,7 +31,10 @@ export default {
 			svelte({
 				dev,
 				hydratable: true,
-				emitCss: true
+				css: function (css) {
+					css.write(config.client.output().dir + '/main.css');
+				},
+				preprocess
 			}),
 			resolve({
 				browser: true,
@@ -69,7 +77,8 @@ export default {
 			}),
 			svelte({
 				generate: 'ssr',
-				dev
+				dev,
+				preprocess
 			}),
 			resolve({
 				dedupe

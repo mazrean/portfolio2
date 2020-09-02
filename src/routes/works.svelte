@@ -1,20 +1,5 @@
-<style>
-  * {
-	margin: 0;
-	padding: 0;
-  }
-  div {
-	  width: 80%;
-	  margin: 0 auto;
-  }
-  @media screen and (max-width: 640px) {
-	  div {
-		  width: 100%;
-	  }
-  }
-</style>
-
-<script>
+<script lang="ts">
+	// @ts-checks
 	import Basic from "../components/Basic.svelte"
 </script>
 
