@@ -1,8 +1,8 @@
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
@@ -44,7 +44,7 @@ export default {
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
-				runtimeHelpers: true,
+				babelHelpers: 'runtime',
 				exclude: ['node_modules/@babel/**'],
 				presets: [
 					['@babel/preset-env', {
@@ -64,6 +64,7 @@ export default {
 			})
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
 	},
 
@@ -95,6 +96,7 @@ export default {
 	serviceworker: {
 		input: config.serviceworker.input(),
 		output: config.serviceworker.output(),
+		preserveEntrySignatures: 'strict',
 		plugins: [
 			resolve(),
 			replace({

@@ -17,24 +17,24 @@
 	white-space: nowrap;
 	letter-spacing: .15em;
 	margin: 0;
-	opacity: 1;
-	animation: 
-		opacity 2.0s
-  }
-	
-  @keyframes opacity {
-	from { opacity: 0 }
-	to { opacity: 1 }
   }
 </style>
 
 <script lang="ts">
 	// @ts-check
 	export let segment: string;
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import Menu from "./Menu.svelte"
+	let visible = false
+	onMount(async () => {
+		visible = true
+	})
 </script>
 
 <div>
-	<h1>Mazrean's Portfolio</h1>
+	{#if visible}
+	<h1 in:fade = "{{delay:0,duration:2000}}" >Mazrean's Portfolio</h1>
+	{/if}
 	<Menu {segment} />
 </div>
