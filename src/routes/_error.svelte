@@ -1,5 +1,6 @@
-<script>
-	export let status;
+<script lang="ts">
+	// @ts-check
+	export let status: number;
 	export let error;
 
 	const dev = process.env.NODE_ENV === 'development';

@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+	// @ts-check
 	import Title from '../components/Title.svelte'
 
-	export let segment;
+	export let segment: string;
 </script>
 
 <style>

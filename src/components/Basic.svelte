@@ -42,9 +42,10 @@
 	}
 </style>
 
-<script>
-	export let title;
-	export let discription;
+<script lang="ts">
+	// @ts-check
+	export let title: string;
+	export let discription: string;
 </script>
 
 <div class="wrapper">

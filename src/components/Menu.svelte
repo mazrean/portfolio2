@@ -125,16 +125,17 @@
 	}
 </style>
 
-<script>
+<script lang="ts">
+	// @ts-check
 	import { goto } from '@sapper/app';
-	export let segment
-	let clicked = false
+	export let segment: string;
+	let clicked = false;
 	let mouseoverOne = false;
 	let mouseoverTwo = false;
-	const menuNavi = (path)=>{
+	const menuNavi = (path: string)=>{
 		return async ()=>{
 			clicked = !clicked
-			await goto(path)
+			await goto(path, {})
 		}
 	}
 </script>
