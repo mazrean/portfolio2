@@ -20,14 +20,6 @@
 		display: flex;
 		justify-content: center;
 	}
-	.menu {
-		position: fixed;
-		right: 0;
-		z-index: 100;
-		display: flex;
-		justify-items: right;
-		width: 120px;
-	}
 	@media screen and (max-width: 640px) {
 		main {
 			width: 100%;
