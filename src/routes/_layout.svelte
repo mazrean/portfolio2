@@ -23,14 +23,21 @@
 	.menu {
 		position: fixed;
 		right: 0;
+		z-index: 100;
+		display: flex;
+		justify-items: right;
+		width: 120px;
+	}
+	@media screen and (max-width: 640px) {
+		main {
+			width: 100%;
+		}
 	}
 </style>
 
 <Header />
 <div class="container">
-	<div class="menu">
-		<Menu {segment}></Menu>
-	</div>
+	<Menu {segment}></Menu>
 
 	<main>
 		<slot></slot>

@@ -84,26 +84,45 @@
 
   span {
     background-color: transparent;
+    visibility: hidden;
+  }
+  span.menu {
+    visibility: visible;
+  }
+
+	.m {
+		position: fixed;
+		right: 0;
+		z-index: 100;
+		display: flex;
+		justify-items: right;
+		width: 0px;
+    transition: all 0.3s;
+	}
+  .m.menu {
+    width: 120px;
   }
 </style>
 
-<ul class:menu>
-  {#each pages as page, i (page.Name)}
-    <li
-      class="page_list {segment === page.Segment ? 'selected' : ''}
-        {page.Hover ? 'mouseover' : ''}"
-      class:menu
-      on:click={segment !== page.Segment ? page.goto : () => {}}
-      on:mouseover={() => {
-        page.Hover = true;
-      }}
-      on:mouseout={() => {
-        page.Hover = false;
-      }}>
-      <span>{page.Name}</span>
-    </li>
-    {#if i < pages.length - 1}
-      <hr class:menu />
-    {/if}
-  {/each}
-</ul>
+<div class="m" class:menu>
+  <ul class:menu>
+    {#each pages as page, i (page.Name)}
+      <li
+        class="page_list {segment === page.Segment ? 'selected' : ''}
+          {page.Hover ? 'mouseover' : ''}"
+        class:menu
+        on:click={segment !== page.Segment ? page.goto : () => {}}
+        on:mouseover={() => {
+          page.Hover = true;
+        }}
+        on:mouseout={() => {
+          page.Hover = false;
+        }}>
+        <span class:menu>{page.Name}</span>
+      </li>
+      {#if i < pages.length - 1}
+        <hr class:menu />
+      {/if}
+    {/each}
+  </ul>
+</div>
