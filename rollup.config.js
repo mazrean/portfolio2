@@ -7,6 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import autoPreprocess from 'svelte-preprocess';
+import typescript from '@rollup/plugin-typescript';
 const preprocess = autoPreprocess();
 
 const mode = process.env.NODE_ENV;
@@ -28,6 +29,7 @@ export default {
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
+			typescript({ sourceMap: dev }),
 			svelte({
 				dev,
 				hydratable: true,
@@ -43,7 +45,7 @@ export default {
 			commonjs(),
 
 			legacy && babel({
-				extensions: ['.js', '.mjs', '.html', '.svelte'],
+				extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
 				babelHelpers: 'runtime',
 				exclude: ['node_modules/@babel/**'],
 				presets: [
@@ -76,6 +78,7 @@ export default {
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
+			typescript({ sourceMap: dev }),
 			svelte({
 				generate: 'ssr',
 				dev,

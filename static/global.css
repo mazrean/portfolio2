@@ -23,11 +23,6 @@ a {
 	color: inherit;
 }
 
-div {
-	width: 80%;
-	margin: 0 auto;
-}
-
 @media screen and (max-width: 640px) {
 	div {
 		width: 100%;

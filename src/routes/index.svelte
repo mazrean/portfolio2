@@ -1,4 +1,7 @@
 <style>
+	.wrapper {
+		width: 100%;
+	}
   .tag {
 	  display: inline-block;
 	  width: 64px;
@@ -28,7 +31,7 @@
   <title>Introduction</title>
 </svelte:head>
 
-<div>
+<div class="wrapper">
 	<Basic title="Profile">
 		<li>
 			<div class="box">
