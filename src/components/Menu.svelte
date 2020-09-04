@@ -91,7 +91,8 @@
   }
 
 	.m {
-		position: fixed;
+    overflow: hidden;
+		position: absolute;
 		right: 0;
 		z-index: 100;
 		display: flex;
