@@ -43,6 +43,7 @@ export default {
 				dedupe
 			}),
 			commonjs(),
+			json(),
 
 			legacy && babel({
 				extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
