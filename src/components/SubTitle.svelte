@@ -6,7 +6,7 @@
 <style>
   h2 {
     max-height: 40px;
-    font-size: 24px;
+    font-size: 36px;
     font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
     font-weight: bolder;
     border-bottom: 2px #022b77 solid;

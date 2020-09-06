@@ -15,6 +15,7 @@
 		display: flex;
 		justify-content: left;
 		width: 50%;
+		flex-direction: column;
 	}
 	.container {
 		display: flex;

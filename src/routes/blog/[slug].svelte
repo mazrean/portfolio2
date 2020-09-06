@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	export async function preload({ params }: {params: any}) {
+	export async function preload(this: any, { params }: {params: any}) {
 		const res = await this.fetch(`blog/${params.slug}.json`);
 		const data = await res.json();
 		if (res.status === 200) {
@@ -11,7 +11,8 @@
 </script>
 
 <script lang="ts">
-  import type { Post } from "parser/articles";
+	import SubTitle from '../../components/SubTitle.svelte'
+  import type { Post } from "parser/classes";
 	export let post: Post;
 </script>
 
@@ -39,7 +40,7 @@
 	<title>{post.title} - n-ari.tech/blog</title>
 </svelte:head>
 
-<h1>{post.title}</h1>
+<SubTitle title={post.title} />
 <h4>{post.date}</h4>
 
 <div class='content'>

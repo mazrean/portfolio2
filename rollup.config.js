@@ -8,6 +8,7 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import autoPreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import json from '@rollup/plugin-json';
 const preprocess = autoPreprocess();
 
 const mode = process.env.NODE_ENV;
@@ -39,6 +40,7 @@ export default {
 				preprocess
 			}),
 			resolve({
+				preferBuiltins: true,
 				browser: true,
 				dedupe
 			}),
