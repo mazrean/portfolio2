@@ -16,12 +16,18 @@
 	export let post: Post;
 </script>
 
+<style>
+	h4.date {
+		padding: 0 10px;
+	}
+</style>
+
 <svelte:head>
-	<title>{post.title} - n-ari.tech/blog</title>
+	<title>{post.title} - mazrean-portfolio/blog</title>
 </svelte:head>
 
 <SubTitle title={post.title} />
-<h4>{post.date}</h4>
+<h4 class="date">date: {post.date}</h4>
 
 <div class='content'>
 	{@html post.html}

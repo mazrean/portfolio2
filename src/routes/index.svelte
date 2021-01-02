@@ -32,7 +32,7 @@
 </svelte:head>
 
 <div class="wrapper">
-	<Basic title="Profile">
+	<Basic title="Profile" discription="">
 		<li>
 			<div class="box">
 				<span class="tag">HN</span>
@@ -55,7 +55,7 @@
 			</div>
 		</li>
 	</Basic>
-	<Basic title="Performance">
+	<Basic title="Performance" discription="">
 		<li>9月7日(土)にISUCON9予選に参加しました</li>
 		<li>ICTSC予選に出場し、二次予選を11位で突破しました</li>
 		<li>インターンでN-ISUCONに出場し、4位でした</li>
@@ -69,15 +69,15 @@
 		<li>React Native</li>
 		<li>C#/F#</li>
 	</Basic>
-	<Basic title="Interest">
+	<Basic title="Interest" discription="">
 		<li>web系(とくにサーバーサイド)</li>
 		<li>低レイヤ系(OS)</li>
 	</Basic>
-	<Basic title="Favorite">
+	<Basic title="Favorite" discription="">
 		<li>Golang</li>
 		<li>折り紙</li>
 	</Basic>
-	<Basic title="Link">
+	<Basic title="Link" discription="">
 		<li><a href="https://github.com/mazrean">Github</a></li>
 		<li><a href="https://atcoder.jp/users/mazrean">AtCoder</a></li>
 		<li><a href="https://trap.jp/author/mazrean/">所属しているサークルtraPのブログ</a></li>
