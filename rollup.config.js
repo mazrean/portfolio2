@@ -9,7 +9,14 @@ import pkg from './package.json';
 import autoPreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
-const preprocess = autoPreprocess();
+const preprocess = autoPreprocess({
+  scss: {
+    includePaths: ['src'],
+  },
+  postcss: {
+    plugins: [require('autoprefixer')],
+  },
+});
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -34,9 +41,6 @@ export default {
 			svelte({
 				dev,
 				hydratable: true,
-				css: function (css) {
-					css.write(config.client.output().dir + '/main.css');
-				},
 				preprocess
 			}),
 			resolve({

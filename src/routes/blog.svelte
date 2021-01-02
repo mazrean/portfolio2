@@ -13,10 +13,9 @@
   import SubTitle from "../components/SubTitle.svelte";
   import List from "../components/List.svelte";
   import BlogItem from "../components/BlogItem.svelte";
-  import type { iListItem } from "../components/types";
   export let posts: Post[];
 
-  class Article extends Post implements iListItem {
+  class Article extends Post {
     hover: boolean = false;
     mouseDown: boolean = false;
     goto = async () => {

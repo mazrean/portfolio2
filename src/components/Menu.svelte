@@ -13,9 +13,9 @@
   class Page extends ListItem {
     name: string;
     segment: string | undefined;
-    goto = async () => {
+    go = async () => {
       openMenu.set(!menu);
-      await super.goto();
+      await this.goto();
     };
     constructor(name: string, link: string, segment: string | undefined) {
       super(link);
@@ -25,8 +25,9 @@
   }
 
   const pages: Page[] = [
-    new Page("Introduction", ".", undefined),
-    new Page("Works", "works", "works"),
+    new Page("Introduction", "/", undefined),
+    new Page("Works", "/works", "works"),
+    new Page("Blog", "/blog", "blog"),
   ];
 
   onDestroy(unsbscribe);
@@ -107,7 +108,7 @@
         class="page_list {segment === page.segment ? 'selected' : ''}
           {page.hover ? 'mouseover' : ''}"
         class:menu
-        on:click={segment !== page.segment ? page.goto : () => {}}
+        on:click={segment !== page.segment ? page.go : () => {}}
         on:mouseover={() => {
           page.hover = true;
         }}

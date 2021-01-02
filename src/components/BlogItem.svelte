@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Post } from 'parser/classes'
+  import type { Post } from "parser/classes";
   export let article: Post;
 </script>
 
@@ -7,13 +7,13 @@
   span.title {
     font-weight: bolder;
     font-size: 1.4em;
+    position: absolute;
   }
   span.date {
-    margin-left: 65%;
-    font-size: 1.0em;
-    position: absolute;
+    margin: 0 0 0 auto;
+    font-size: 1em;
   }
 </style>
 
-  <span class="title">{article.title}</span>
-  <span class="date">date:{article.date}</span>
+<span class="title">{article.title}</span>
+<span class="date">date:{article.date}</span>
