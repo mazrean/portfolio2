@@ -6,10 +6,10 @@
 <style>
   h2 {
     max-height: 40px;
-    font-size: 36px;
+    font-size: 24px;
     font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
     font-weight: bolder;
-    border-bottom: 2px #022b77 solid;
+    border-bottom: 3.5px #022b77 solid;
     padding: 0 10px;
     margin-bottom: 10px;
   }

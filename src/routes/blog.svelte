@@ -11,12 +11,16 @@
   import { Post } from "parser/classes";
   import { goto } from "@sapper/app";
   import SubTitle from "../components/SubTitle.svelte";
+  import List from "../components/List.svelte";
+  import BlogItem from "../components/BlogItem.svelte";
+  import type { iListItem } from "../components/types";
   export let posts: Post[];
 
-  class Article extends Post {
-    Hover: boolean = false;
+  class Article extends Post implements iListItem {
+    hover: boolean = false;
+    mouseDown: boolean = false;
     goto = async () => {
-      this.Hover = false;
+      this.hover = false;
       await goto(`blog/${this.slug}`, {});
     };
     constructor(post: Post) {
@@ -32,22 +36,7 @@
 </svelte:head>
 
 <SubTitle title="Blog" />
-{#if articles.length !== 0}
-  <ul>
-    {#each articles as article (article.slug)}
-      <li
-        class="page_list {article.Hover ? 'mouseover' : ''}"
-        on:click={article.goto}
-        on:mouseover={() => {
-          article.Hover = true;
-        }}
-        on:mouseout={() => {
-          article.Hover = false;
-        }}>
-        {article.date} - {article.title}
-      </li>
-    {/each}
-  </ul>
-{:else}
-  <p>まだ記事がありません</p>
-{/if}
+
+<List items={articles} height={45} lineWidth={98} let:item={article}>
+  <BlogItem {article} />
+</List>

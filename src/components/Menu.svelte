@@ -1,9 +1,8 @@
 <script lang="ts">
   // @ts-check
   import { onDestroy } from "svelte";
-  import { goto } from "@sapper/app";
-  import { cubicOut } from "svelte/easing";
   import { openMenu } from "../store";
+  import { ListItem } from "./types";
   export let segment: string;
 
   let menu: boolean;
@@ -11,23 +10,20 @@
     menu = value;
   });
 
-  class Page {
-    Name: string;
-    Link: string;
-    Segment: string;
-    Hover: boolean;
+  class Page extends ListItem {
+    name: string;
+    segment: string | undefined;
     goto = async () => {
       openMenu.set(!menu);
-      this.Hover = false;
-      await goto(this.Link, {});
+      await super.goto();
     };
-    constructor(name: string, link: string, segment: string) {
-      this.Name = name;
-      this.Link = link;
-      this.Segment = segment;
-      this.Hover = false;
+    constructor(name: string, link: string, segment: string | undefined) {
+      super(link);
+      this.name = name;
+      this.segment = segment;
     }
   }
+
   const pages: Page[] = [
     new Page("Introduction", ".", undefined),
     new Page("Works", "works", "works"),
@@ -40,7 +36,7 @@
   hr {
     border: #022b77;
     background-color: #022b77;
-    height: 3px;
+    height: 2px;
     width: 0px;
     margin: 0 auto;
     transition: all 0.3s;
@@ -90,16 +86,15 @@
     visibility: visible;
   }
 
-	.m {
-    overflow: hidden;
-		position: absolute;
-		right: 0;
-		z-index: 100;
-		display: flex;
-		justify-items: right;
-		width: 0px;
+  .m {
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-items: right;
+    width: 0px;
     transition: all 0.3s;
-	}
+  }
   .m.menu {
     width: 120px;
   }
@@ -107,19 +102,19 @@
 
 <div class="m" class:menu>
   <ul class:menu>
-    {#each pages as page, i (page.Name)}
+    {#each pages as page, i (page.name)}
       <li
-        class="page_list {segment === page.Segment ? 'selected' : ''}
-          {page.Hover ? 'mouseover' : ''}"
+        class="page_list {segment === page.segment ? 'selected' : ''}
+          {page.hover ? 'mouseover' : ''}"
         class:menu
-        on:click={segment !== page.Segment ? page.goto : () => {}}
+        on:click={segment !== page.segment ? page.goto : () => {}}
         on:mouseover={() => {
-          page.Hover = true;
+          page.hover = true;
         }}
         on:mouseout={() => {
-          page.Hover = false;
+          page.hover = false;
         }}>
-        <span class:menu>{page.Name}</span>
+        <span class:menu>{page.name}</span>
       </li>
       {#if i < pages.length - 1}
         <hr class:menu />
