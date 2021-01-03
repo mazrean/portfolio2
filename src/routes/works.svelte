@@ -8,7 +8,7 @@
 </svelte:head>
 
 <div>
-	<Basic title="Works">
+	<Basic title="Works" discription="">
 		<li>
 			<a href="http://mazrean-twitter-clone.netlify.com/">TwitterClone</a><br>
 			2019年5~6月にtraPのWebエンジニアになろう講習会の最終課題として作ったものです。

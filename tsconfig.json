@@ -1,12 +1,11 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src/*", "src/**/*", "src/node_modules"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+  "include": ["src/**/*", "src/node_modules/**/*", "parser/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "static/*"],
   "compilerOptions": {
-    "target": "es2020",
-    "module": "es2020",
-    "typeRoots": ["./node_modules/@types","./typings"],
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "types": ["svelte", "node","@sapper"]
+    "lib": ["DOM", "ES2017", "WebWorker"],
   }
 }

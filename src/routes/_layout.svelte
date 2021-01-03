@@ -1,7 +1,7 @@
 <script lang="ts">
 	// @ts-check
-	import Header from '../components/Header.svelte'
-	import Menu from "../components/Menu.svelte"
+	import Header from "../components/Header.svelte";
+	import Menu from "../components/Menu.svelte";
 	export let segment: string;
 </script>
 
@@ -15,6 +15,7 @@
 		display: flex;
 		justify-content: left;
 		width: 50%;
+		flex-direction: column;
 	}
 	.container {
 		display: flex;
@@ -29,10 +30,9 @@
 
 <Header />
 <div class="container">
-	<Menu {segment}></Menu>
+	<Menu {segment} />
 
 	<main>
-		<slot></slot>
+		<slot />
 	</main>
 </div>
-

@@ -1,3 +1,10 @@
+<script lang="ts">
+	// @ts-check
+	import SubTitleUnderline from "./SubTitleUnderline.svelte";
+	export let title: string;
+	export let discription: string;
+</script>
+
 <style>
 	div.wrapper {
 		width: 100%;
@@ -12,15 +19,6 @@
 		margin-left: 0;
 		margin-right: auto;
 	}
-	h2 {
-		max-height: 40px;
-		font-size: 24px;
-    	font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
-		font-weight: bolder;
-		border-bottom: 2px #022b77 solid;
-		padding: 0 10px;
-		margin-bottom: 10px;
-	}
 	hr {
 		display: block;
 		border: #022b77;
@@ -30,28 +28,14 @@
 		margin-left: 0;
 		margin-right: auto;
 	}
-	div.title {
-		display: inline-flex;
-		justify-content: left;
-		width: 100%;
-		margin: 0 auto;
-	}
 	p {
 		margin-right: auto;
 		margin-left: 0;
 	}
 </style>
 
-<script lang="ts">
-	// @ts-check
-	export let title: string;
-	export let discription: string;
-</script>
-
 <div class="wrapper">
-	<div class="title">
-		<h2>{title}</h2>
-	</div>
+	<SubTitleUnderline {title} />
 	<ul class="slot">
 		<slot />
 	</ul>
