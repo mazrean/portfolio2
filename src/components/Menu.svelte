@@ -108,7 +108,7 @@
         class="page_list {segment === page.segment ? 'selected' : ''}
           {page.hover ? 'mouseover' : ''}"
         class:menu
-        on:click={segment !== page.segment ? page.go : () => {}}
+        on:click={page.go}
         on:mouseover={() => {
           page.hover = true;
         }}

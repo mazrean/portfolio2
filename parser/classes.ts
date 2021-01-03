@@ -14,6 +14,7 @@ export class Attr {
 export class Post extends Attr {
   date: string
   html: string
+  link: string
   constructor(slug: string, title: string, publishDate: string, html: string, updateDate?: string){
     super(slug, title, publishDate, updateDate)
     if (updateDate) {
@@ -22,5 +23,6 @@ export class Post extends Attr {
       this.date = publishDate
     }
     this.html = html
+    this.link = `blog/${slug}`;
   }
 }

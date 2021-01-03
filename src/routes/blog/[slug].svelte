@@ -13,13 +13,19 @@
 <script lang="ts">
 	import SubTitle from "../../components/SubTitle.svelte";
 	import type { Post } from "parser/classes";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		document.querySelectorAll("a").forEach((a) => {
+			if (!a.hash || !document.querySelectorAll(a.hash).length) return;
+
+			a.href = window.location + a.hash;
+		});
+	});
 	export let post: Post;
 </script>
 
 <style lang="scss">
-	@import url("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css");
-	@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css");
-
 	$link-color: #022b77 !default;
 	$hr-color: #e1e4e8 !default;
 	$h6-color: #6a737d !default;
@@ -34,9 +40,6 @@
 	$mark-color: black !default;
 	$mark-background-color: yellow !default;
 
-	h4.date {
-		padding: 0 10px;
-	}
 	:global(.content) {
 		-ms-text-size-adjust: 100%;
 		-webkit-text-size-adjust: 100%;
@@ -278,7 +281,7 @@
 </svelte:head>
 
 <SubTitle title={post.title} />
-<h4 class="date">date: {post.date}</h4>
+<h4>date: {post.date}</h4>
 
 <div class="content">
 	{@html post.html}

@@ -11,7 +11,7 @@ const fileNames = readdirSync(postDir)
 const postPromises: Promise<Post>[] = []
 
 for (const fileName of fileNames) {
-  if (process.env.NODE_ENV !== 'development' && fileName.endsWith("_test")) {
+  if (process.env.NODE_ENV !== 'development' && fileName.startsWith("test_")) {
     continue
   }
   // fileの拡張子チェック

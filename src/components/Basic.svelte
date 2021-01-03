@@ -1,3 +1,10 @@
+<script lang="ts">
+	// @ts-check
+	import SubTitleUnderline from "./SubTitleUnderline.svelte";
+	export let title: string;
+	export let discription: string;
+</script>
+
 <style>
 	div.wrapper {
 		width: 100%;
@@ -27,15 +34,8 @@
 	}
 </style>
 
-<script lang="ts">
-	// @ts-check
-	import SubTitle from './SubTitle.svelte'
-	export let title: string;
-	export let discription: string;
-</script>
-
 <div class="wrapper">
-	<SubTitle {title} />
+	<SubTitleUnderline {title} />
 	<ul class="slot">
 		<slot />
 	</ul>

@@ -1,15 +1,14 @@
-import resolve from 'rollup-plugin-node-resolve';
-import replace from 'rollup-plugin-replace';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import sveltePreprocess from 'svelte-preprocess';
+import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-import autoPreprocess from 'svelte-preprocess';
-import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
-const preprocess = autoPreprocess({
+const preprocess = sveltePreprocess({
   scss: {
     includePaths: ['src'],
   },
@@ -25,34 +24,34 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	(warning.code === 'THIS_IS_UNDEFINED') ||
 	onwarn(warning);
-const dedupe = importee => importee === 'svelte' || importee.startsWith('svelte/');
 
 export default {
 	client: {
-		input: config.client.input(),
+		input: config.client.input().replace(/\.js$/, '.ts'),
 		output: config.client.output(),
 		plugins: [
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
-			typescript({ sourceMap: dev }),
 			svelte({
-				dev,
-				hydratable: true,
-				preprocess
+				preprocess,
+				compilerOptions: {
+					dev,
+					hydratable: true
+				}
 			}),
 			resolve({
-				preferBuiltins: true,
 				browser: true,
-				dedupe
+				dedupe: ['svelte']
 			}),
 			commonjs(),
-			json(),
+			typescript({ sourceMap: dev }),
 
 			legacy && babel({
-				extensions: ['.ts', '.js', '.mjs', '.html', '.svelte'],
+				extensions: ['.js', '.mjs', '.html', '.svelte'],
 				babelHelpers: 'runtime',
 				exclude: ['node_modules/@babel/**'],
 				presets: [
@@ -78,35 +77,37 @@ export default {
 	},
 
 	server: {
-		input: config.server.input(),
+		input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
 		output: config.server.output(),
 		plugins: [
 			replace({
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
-			typescript({ sourceMap: dev }),
 			svelte({
-				generate: 'ssr',
-				dev,
-				preprocess
+				preprocess,
+				compilerOptions: {
+					dev,
+					generate: 'ssr',
+					hydratable: true
+				},
+				emitCss: false
 			}),
 			resolve({
-				dedupe
+				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			typescript({ sourceMap: dev })
 		],
-		external: Object.keys(pkg.dependencies).concat(
-			require('module').builtinModules || Object.keys(process.binding('natives'))
-		),
+		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
+		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
 
 	serviceworker: {
-		input: config.serviceworker.input(),
+		input: config.serviceworker.input().replace(/\.js$/, '.ts'),
 		output: config.serviceworker.output(),
-		preserveEntrySignatures: 'strict',
 		plugins: [
 			resolve(),
 			replace({
@@ -114,9 +115,11 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
 			commonjs(),
+			typescript({ sourceMap: dev }),
 			!dev && terser()
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
 	}
 };

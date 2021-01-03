@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   export async function preload(this: any) {
-    const res: any = await this.fetch(`blog.json`);
+    const res: any = await this.fetch(`/blog.json`);
     const posts: Post[] = await res.json();
     return { posts };
   }
@@ -10,17 +10,17 @@
   // @ts-check
   import { Post } from "parser/classes";
   import { goto } from "@sapper/app";
-  import SubTitle from "../components/SubTitle.svelte";
-  import List from "../components/List.svelte";
-  import BlogItem from "../components/BlogItem.svelte";
+  import SubTitleUnderline from "../../components/SubTitleUnderline.svelte";
+  import List from "../../components/List.svelte";
+  import BlogItem from "../../components/BlogItem.svelte";
   export let posts: Post[];
 
   class Article extends Post {
     hover: boolean = false;
     mouseDown: boolean = false;
-    goto = async () => {
+    goto = () => {
       this.hover = false;
-      await goto(`blog/${this.slug}`, {});
+      goto(this.link, {});
     };
     constructor(post: Post) {
       super(post.slug, post.title, post.date, post.html);
@@ -34,7 +34,7 @@
   <title>Blog</title>
 </svelte:head>
 
-<SubTitle title="Blog" />
+<SubTitleUnderline title="Blog" />
 
 <List items={articles} height={45} lineWidth={98} let:item={article}>
   <BlogItem {article} />

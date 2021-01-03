@@ -2,8 +2,8 @@
   export let items: any[];
   export let height: Number;
   export let lineWidth: Number;
-  let cssHeight: String = String(height)+"px";
-  let cssLineWidth: String = String(lineWidth)+"%";
+  let cssHeight: String = String(height) + "px";
+  let cssLineWidth: String = String(lineWidth) + "%";
 </script>
 
 <style>
@@ -26,11 +26,11 @@
   }
 
   li {
-    height: var(--height);
+    min-height: var(--height);
     display: flex;
     align-items: center;
     margin: 2.5px auto;
-    padding: 0 15px;
+    padding: 0 10px;
     cursor: pointer;
     transition: all 0.3s;
   }
@@ -49,8 +49,7 @@
     {#each items as item, i}
       <li
         class="item {item.mouseDown ? 'mousedown' : ''} {item.hover ? 'hover' : ''}"
-        on:mousedown={() => item.mouseDown = true}
-        on:click={item.goto}
+        on:mousedown={() => (item.mouseDown = true)}
         on:mouseover={() => {
           item.hover = true;
         }}
@@ -66,6 +65,4 @@
       {/if}
     {/each}
   </ul>
-{:else}
-  No Items
-{/if}
+{:else}No Items{/if}
