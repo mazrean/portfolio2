@@ -1,34 +1,49 @@
+<script lang="ts">
+	// @ts-check
+	import Basic from "../components/Basic.svelte";
+	const today = new Date();
+	const grade =
+		today.getMonth() >= 4
+			? today.getFullYear() - 2018
+			: today.getFullYear() - 2019;
+	const strGrade = grade > 4 ? `修士${grade - 4}年` : `学部${grade}年`;
+</script>
+
 <style>
 	.wrapper {
 		width: 100%;
 	}
-  .tag {
-	  display: inline-block;
-	  width: 64px;
-  }
-  .content {
-	  display: inline-block;
-  }
-  .box {
-	  display: flex;
-	  align-items: flex-start;
-	  width: 100%;
-  }
-  span {
-	  margin-right: 10px;
-  }
+	.tag {
+		display: inline-block;
+		width: 64px;
+	}
+	.content {
+		display: inline-block;
+	}
+	.box {
+		display: flex;
+		align-items: flex-start;
+		width: 100%;
+	}
+	span {
+		margin-right: 10px;
+	}
+	a:after {
+		font-family: "Font Awesome 5 Free";
+		content: "\f0c1";
+		font-size: 0.7em;
+		font-weight: 900;
+		padding: 0 0 0 0.3em;
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		line-height: 1;
+	}
 </style>
 
-<script lang="ts">
-	// @ts-check
-	import Basic from "../components/Basic.svelte"
-	const today = new Date()
-	const grade = today.getMonth()>=4?today.getFullYear()-2018:today.getFullYear()-2019
-	const strGrade = grade>4?`修士${grade-4}年`:`学部${grade}年`
-</script>
-
 <svelte:head>
-  <title>Introduction</title>
+	<title>Introduction</title>
 </svelte:head>
 
 <div class="wrapper">
@@ -51,7 +66,8 @@
 			<div class="box">
 				<span class="tag">サークル</span>
 				<span>:</span>
-				<span class="content"><a href="https://trap.jp/">デジタル創作同好会traP</a>,折り紙同好会</span>
+				<span class="content"><a
+						href="https://trap.jp/">デジタル創作同好会traP</a>,折り紙同好会</span>
 			</div>
 		</li>
 	</Basic>
@@ -80,6 +96,9 @@
 	<Basic title="Link" discription="">
 		<li><a href="https://github.com/mazrean">Github</a></li>
 		<li><a href="https://atcoder.jp/users/mazrean">AtCoder</a></li>
-		<li><a href="https://trap.jp/author/mazrean/">所属しているサークルtraPのブログ</a></li>
+		<li>
+			<a
+				href="https://trap.jp/author/mazrean/">所属しているサークルtraPのブログ</a>
+		</li>
 	</Basic>
 </div>
