@@ -56,7 +56,6 @@
 		:global(a) {
 			color: $link-color;
 			background-color: initial;
-			text-decoration: none;
 			&:active,
 			&:hover {
 				text-decoration: underline;
@@ -65,6 +64,22 @@
 			&:not([href]) {
 				color: inherit;
 				text-decoration: none;
+			}
+			&:not(.footnote-ref) {
+				&:not(.footnote-backref) {
+					&::after {
+						font-family: "Font Awesome 5 Free";
+						content: "\f0c1";
+						font-size: 0.7em;
+						font-weight: 900;
+						padding: 0 0 0 0.3em;
+						display: inline-block;
+						font-style: normal;
+						font-variant: normal;
+						text-rendering: auto;
+						line-height: 1;
+					}
+				}
 			}
 		}
 
