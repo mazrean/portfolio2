@@ -1,19 +1,19 @@
 <script lang="ts" context="module">
-	export async function preload(this: any, { params }: { params: any }) {
-		const res = await this.fetch(`/blog/${params.slug}.json`);
-		const data = await res.json();
-		if (res.status === 200) {
-			return { post: data };
-		} else {
-			this.error(res.status, data.message);
-		}
+	export function preload(this: any, { params }: { params: any }) {
+		const post: Promise<Post> = (async () => {
+			const res = await this.fetch(`/blog/${params.slug}.json`);
+			return res.json();
+		})();
+		return { post };
 	}
 </script>
 
 <script lang="ts">
 	import SubTitle from "../../components/SubTitle.svelte";
 	import type { Post } from "parser/classes";
+	import { Shadow } from "svelte-loading-spinners";
 	import { onMount } from "svelte";
+	export let post: Promise<Post>;
 
 	onMount(() => {
 		document.querySelectorAll("a").forEach((a) => {
@@ -22,7 +22,10 @@
 			a.href = window.location + a.hash;
 		});
 	});
-	export let post: Post;
+	function title(post: Post): string {
+		document.title = post.title + " - mazrean-portfolio/blog";
+		return post.title;
+	}
 </script>
 
 <style lang="scss">
@@ -292,12 +295,16 @@
 </style>
 
 <svelte:head>
-	<title>{post.title} - mazrean-portfolio/blog</title>
+	<title>mazrean-portfolio/blog</title>
 </svelte:head>
 
-<SubTitle title={post.title} />
-<h4>date: {post.date}</h4>
+{#await post}
+	<Shadow class="Shadow" size="60" color="#022b77" unit="px" />
+{:then post}
+	<SubTitle title={title(post)} />
+	<h4>date: {post.date}</h4>
 
-<div class="content">
-	{@html post.html}
-</div>
+	<div class="content">
+		{@html post.html}
+	</div>
+{/await}
