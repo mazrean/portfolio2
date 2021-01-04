@@ -52,6 +52,8 @@
 		margin: 90px auto;
 	}
 
+	@import url("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css");
+	@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css");
 	:global(.content) {
 		-ms-text-size-adjust: 100%;
 		-webkit-text-size-adjust: 100%;
@@ -305,6 +307,16 @@
 
 <svelte:head>
 	<title>mazrean-portfolio/blog</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+		rel="stylesheet"
+		type="text/css"
+		crossorigin />
+	<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css"
+		rel="stylesheet"
+		type="text/css"
+		crossorigin />
 </svelte:head>
 
 {#await Shadow then Shadow}
