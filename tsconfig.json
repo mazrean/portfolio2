@@ -6,6 +6,6 @@
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "lib": ["DOM", "ES2017", "WebWorker"],
+    "lib": ["DOM", "ES2020", "WebWorker"],
   }
 }
