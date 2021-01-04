@@ -4,10 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import scss from "rollup-plugin-scss";
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
-import autoPrefixer from 'autoprefixer';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 const preprocess = sveltePreprocess({
@@ -15,7 +13,7 @@ const preprocess = sveltePreprocess({
     includePaths: ['src'],
   },
   postcss: {
-    plugins: [autoPrefixer],
+    plugins: [require('autoprefixer')],
   },
 });
 
@@ -37,11 +35,6 @@ export default {
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
-			}),
-			scss({
-				includePaths: ["src/style/*.scss"],
-				output: 'static/global.css',
-				outputStyle: "compressed"
 			}),
 			svelte({
 				preprocess,
