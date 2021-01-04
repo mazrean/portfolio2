@@ -4,16 +4,19 @@
 			const res = await this.fetch(`/blog/${params.slug}.json`);
 			return res.json();
 		})();
-		return { post };
+		return {
+			post,
+			Shadow: (async () => (await import("svelte-loading-spinners")).Shadow)(),
+		};
 	}
 </script>
 
 <script lang="ts">
 	import SubTitle from "../../components/SubTitle.svelte";
 	import type { Post } from "parser/classes";
-	import { Shadow } from "svelte-loading-spinners";
 	import { onMount } from "svelte";
 	export let post: Promise<Post>;
+	export let Shadow: Promise<any>;
 
 	onMount(() => {
 		document.querySelectorAll("a").forEach((a) => {
@@ -42,6 +45,12 @@
 	$img-background-color: #fff !default;
 	$mark-color: black !default;
 	$mark-background-color: yellow !default;
+
+	.shadow {
+		width: 60px;
+		height: 60px;
+		margin: 90px auto;
+	}
 
 	:global(.content) {
 		-ms-text-size-adjust: 100%;
@@ -298,13 +307,22 @@
 	<title>mazrean-portfolio/blog</title>
 </svelte:head>
 
-{#await post}
-	<Shadow class="Shadow" size="60" color="#022b77" unit="px" />
-{:then post}
-	<SubTitle title={title(post)} />
-	<h4>date: {post.date}</h4>
+{#await Shadow then Shadow}
+	{#await post}
+		<div class="shadow">
+			<svelte:component
+				this={Shadow}
+				class="Shadow"
+				size="60"
+				color="#022b77"
+				unit="px" />
+		</div>
+	{:then post}
+		<SubTitle title={title(post)} />
+		<h4>date: {post.date}</h4>
 
-	<div class="content">
-		{@html post.html}
-	</div>
+		<div class="content">
+			{@html post.html}
+		</div>
+	{/await}
 {/await}
