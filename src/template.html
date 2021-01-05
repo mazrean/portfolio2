@@ -13,8 +13,6 @@
 		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css" as="style">
 
 		<link href="/global.css" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700&display=swap" rel="stylesheet" type="text/css" crossorigin>
-		<link href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" rel="stylesheet" type="text/css" crossorigin>
 
 	<!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
@@ -28,15 +26,29 @@
 	     initialise the router -->
 	%sapper.scripts%
 
+		<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;700&display=swap" rel="stylesheet" type="text/css" crossorigin>
+		<link href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" rel="stylesheet" type="text/css" crossorigin>
+
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/png" href="favicon.png" />
 	<!-- This contains the contents of the <svelte:head> component, if
 	     the current page has one -->
 	%sapper.head%
 </head>
+
 <body>
 	<!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
 	<div id="sapper">%sapper.html%</div>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160705305-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-160705305-1');
+	</script>
 </body>
 </html>
