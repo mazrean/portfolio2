@@ -72,26 +72,27 @@
 		</li>
 	</Basic>
 	<Basic title="Performance" discription="">
-		<li>9月7日(土)にISUCON9予選に参加しました</li>
-		<li>ICTSC予選に出場し、二次予選を11位で突破しました</li>
-		<li>インターンでN-ISUCONに出場し、4位でした</li>
-		<li>ICTSC本戦に出場し、9位でした</li>
+		<li>ICTSC2019本戦にチーム「stohm」で出場し、9位でした</li>
+		<li>ICTSC2020予選にチーム「xxNaNxx」で出場し、8位で予選突破しました</li>
+		<li>セキュリティキャンプ全国大会2020オンラインに参加しました</li>
+		<li>mixi Bug Shooting Challenge #5 ONLINEで優勝しました</li>
 	</Basic>
 	<Basic title="Skills" discription="上にあるものほど得意です。">
 		<li>Golang</li>
 		<li>MySQL,docker</li>
+		<li>Rust</li>
+		<li>Svelte</li>
 		<li>HTML/CSS/JavaScript</li>
-		<li>Svelte/React.js/Vue.js</li>
-		<li>React Native</li>
+		<li>React.js/Vue.js</li>
 		<li>C#/F#</li>
 	</Basic>
 	<Basic title="Interest" discription="">
-		<li>web系(とくにサーバーサイド)</li>
+		<li>サーバーサイド</li>
 		<li>低レイヤ系(OS)</li>
 	</Basic>
 	<Basic title="Favorite" discription="">
+		<li>オンラインのLT会・講習会の聴講</li>
 		<li>Golang</li>
-		<li>折り紙</li>
 	</Basic>
 	<Basic title="Link" discription="">
 		<li><a href="https://github.com/mazrean">Github</a></li>
