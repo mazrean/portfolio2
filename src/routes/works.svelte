@@ -1,5 +1,6 @@
 <script lang="ts">
 	// @ts-checks
+	import type { space } from "svelte/internal";
 	import Basic from "../components/Basic.svelte";
 </script>
 
@@ -54,7 +55,7 @@
 		</li>
 		<li>
 			<a
-				href="https://github.com/traPtitech/trap-collection-server"><pre>traP Collection</pre></a><br />
+				href="https://github.com/traPtitech/trap-collection-server">traP&ensp;Collection</a><br />
 			サークルのSysAd班として制作しているゲームランチャーです。
 			traPというサークルは現在はWebアプリケーションなどのデジタル創作全般を取り扱うようになっていますが、
 			元々は主にゲーム製作を行うサークルでした。
