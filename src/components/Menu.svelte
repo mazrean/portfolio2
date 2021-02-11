@@ -79,6 +79,7 @@
     padding-left: 0;
     margin: 0;
     transition: all 0.3s;
+    overflow: hidden;
   }
   ul.menu {
     width: 100%;

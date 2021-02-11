@@ -4,7 +4,7 @@
 </script>
 
 <div class="header">
-  <div class="span" />
+  <span />
   <h1>Mazrean's<wbr /> Portfolio</h1>
   <Hamburger />
 </div>
@@ -20,10 +20,11 @@
     border-bottom: #022b77 solid 2px;
   }
 
-  div.span {
+  span {
     width: 60px;
     height: 60px;
     margin-left: 5px;
+    display: block;
   }
 
   h1 {
@@ -31,7 +32,6 @@
     font-size: calc(2.4rem + ((1vw - 0.64rem) * 2.1429));
     font-weight: bold;
     overflow: hidden;
-    white-space: nowrap;
     letter-spacing: 0.15em;
     margin: 0 auto;
     text-align: center;
