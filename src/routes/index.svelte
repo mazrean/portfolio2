@@ -81,6 +81,7 @@
   .tag {
     display: inline-block;
     width: 64px;
+    max-width: 15%;
   }
   .content {
     display: inline-block;

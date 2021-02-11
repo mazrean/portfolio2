@@ -33,6 +33,32 @@
   onDestroy(unsbscribe);
 </script>
 
+<div class="m" class:menu>
+  <ul class:menu>
+    {#each pages as page, i (page.name)}
+      <li
+        class="page_list {segment === page.segment
+          ? 'selected'
+          : ''}
+          {page.hover ? 'mouseover' : ''}"
+        class:menu
+        on:click={page.go}
+        on:mouseover={() => {
+          page.hover = true;
+        }}
+        on:mouseout={() => {
+          page.hover = false;
+        }}
+      >
+        <span class:menu>{page.name}</span>
+      </li>
+      {#if i < pages.length - 1}
+        <hr class:menu />
+      {/if}
+    {/each}
+  </ul>
+</div>
+
 <style>
   hr {
     border: #022b77;
@@ -55,21 +81,23 @@
     transition: all 0.3s;
   }
   ul.menu {
-    width: 120px;
+    width: 100%;
   }
 
   li {
     height: 0px;
     display: flex;
     align-items: center;
-    margin: 2.5px auto;
+    margin: 2.5px 0;
     margin-left: 5px;
     padding: 0 10px;
     cursor: pointer;
     transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.5);
   }
   li.selected {
     border-left: #022b77 solid 5px;
+    margin-left: 0;
   }
   li.mouseover {
     background-color: #022b77;
@@ -82,13 +110,15 @@
   span {
     background-color: transparent;
     visibility: hidden;
+    width: 0px;
   }
   span.menu {
     visibility: visible;
+    width: 100%;
   }
 
   .m {
-    position: fixed;
+    position: absolute;
     right: 0;
     z-index: 100;
     display: flex;
@@ -97,29 +127,6 @@
     transition: all 0.3s;
   }
   .m.menu {
-    width: 120px;
+    width: 115px;
   }
 </style>
-
-<div class="m" class:menu>
-  <ul class:menu>
-    {#each pages as page, i (page.name)}
-      <li
-        class="page_list {segment === page.segment ? 'selected' : ''}
-          {page.hover ? 'mouseover' : ''}"
-        class:menu
-        on:click={page.go}
-        on:mouseover={() => {
-          page.hover = true;
-        }}
-        on:mouseout={() => {
-          page.hover = false;
-        }}>
-        <span class:menu>{page.name}</span>
-      </li>
-      {#if i < pages.length - 1}
-        <hr class:menu />
-      {/if}
-    {/each}
-  </ul>
-</div>

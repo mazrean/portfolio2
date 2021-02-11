@@ -38,37 +38,44 @@
   }
 </script>
 
-<style>
-  div {
-    width: 60px;
-    height: 60px;
-    margin: 90px auto;
-  }
-</style>
-
 <svelte:head>
   <title>Blog</title>
 </svelte:head>
 
-<SubTitleUnderline title="Blog" />
+<div class="wrapper">
+  <SubTitleUnderline title="Blog" />
 
-{#await Shadow then Shadow}
-  {#await posts}
-    <div>
-      <svelte:component
-        this={Shadow}
-        class="Shadow"
-        size="60"
-        color="#022b77"
-        unit="px" />
-    </div>
-  {:then postList}
-    <List
-      items={article(postList)}
-      height={45}
-      lineWidth={98}
-      let:item={article}>
-      <BlogItem {article} />
-    </List>
+  {#await Shadow then Shadow}
+    {#await posts}
+      <div class="loading">
+        <svelte:component
+          this={Shadow}
+          class="Shadow"
+          size="60"
+          color="#022b77"
+          unit="px"
+        />
+      </div>
+    {:then postList}
+      <List
+        items={article(postList)}
+        height={45}
+        lineWidth={98}
+        let:item={article}
+      >
+        <BlogItem {article} />
+      </List>
+    {/await}
   {/await}
-{/await}
+</div>
+
+<style>
+  div.loading {
+    width: 60px;
+    height: 60px;
+    margin: 90px auto;
+  }
+  div.wrapper {
+    padding: 0 10px;
+  }
+</style>

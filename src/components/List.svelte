@@ -6,6 +6,32 @@
   let cssLineWidth: String = String(lineWidth) + "%";
 </script>
 
+{#if items.length !== 0}
+  <ul>
+    {#each items as item, i}
+      <li
+        class="item {item.mouseDown ? 'mousedown' : ''} {item.hover
+          ? 'hover'
+          : ''}"
+        on:mousedown={() => (item.mouseDown = true)}
+        on:mouseover={() => {
+          item.hover = true;
+        }}
+        on:mouseout={() => {
+          item.hover = false;
+          item.mouseDown = false;
+        }}
+        style="--height: {cssHeight}"
+      >
+        <slot {item} />
+      </li>
+      {#if i < items.length - 1}
+        <hr style="--line-width: {cssLineWidth}" />
+      {/if}
+    {/each}
+  </ul>
+{:else}No Items{/if}
+
 <style>
   hr {
     border: #022b77;
@@ -43,26 +69,3 @@
     color: #ffffff;
   }
 </style>
-
-{#if items.length !== 0}
-  <ul>
-    {#each items as item, i}
-      <li
-        class="item {item.mouseDown ? 'mousedown' : ''} {item.hover ? 'hover' : ''}"
-        on:mousedown={() => (item.mouseDown = true)}
-        on:mouseover={() => {
-          item.hover = true;
-        }}
-        on:mouseout={() => {
-          item.hover = false;
-          item.mouseDown = false;
-        }}
-        style="--height: {cssHeight}">
-        <slot {item} />
-      </li>
-      {#if i < items.length - 1}
-        <hr style="--line-width: {cssLineWidth}" />
-      {/if}
-    {/each}
-  </ul>
-{:else}No Items{/if}
