@@ -23,14 +23,20 @@ a {
 	color: inherit;
 }
 
-@media screen and (max-width: 640px) {
-	div {
-		width: 100%;
-	}
-}
-
 @media (min-width: 400px) {
 	body {
 		font-size: 16px;
 	}
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?5kbun7');
+  src:  url('fonts/icomoon.eot?5kbun7#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5kbun7') format('truetype'),
+    url('fonts/icomoon.woff?5kbun7') format('woff'),
+    url('fonts/icomoon.svg?5kbun7#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
