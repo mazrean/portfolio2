@@ -19,7 +19,6 @@
   export let Shadow: Promise<any>;
 
   onMount(() => {
-    console.log("hoge");
     document.querySelectorAll("a").forEach((a) => {
       if (!a.hash || !document.querySelectorAll(a.hash).length) return;
 
