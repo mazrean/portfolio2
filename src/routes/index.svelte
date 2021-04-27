@@ -42,9 +42,11 @@
   </Basic>
   <Basic title="Performance" discription="">
     <li>ICTSC2019本戦にチーム「stohm」で出場し、9位でした</li>
-    <li>ICTSC2020予選にチーム「xxNaNxx」で出場し、8位で予選突破しました</li>
+    <li>ICTSC2020本戦にチーム「xxNaNxx」で出場し、8位でした</li>
+    <li>第16回情報危機管理コンテスト 一次予選を通過しました</li>
     <li>セキュリティキャンプ全国大会2020オンラインに参加しました</li>
     <li>mixi Bug Shooting Challenge #5 ONLINEで優勝しました</li>
+    <li><a href="https://trap.jp/post/1263/">CPCTF2021</a>で作問・インフラ・Webshell開発を担当しました</li>
   </Basic>
   <Basic title="Skills" discription="上にあるものほど得意です。">
     <li>Golang</li>
@@ -67,9 +69,9 @@
     <li><a href="https://github.com/mazrean">Github</a></li>
     <li><a href="https://atcoder.jp/users/mazrean">AtCoder</a></li>
     <li>
-      <a href="https://trap.jp/author/mazrean/"
-        >所属しているサークルtraPのブログ</a
-      >
+      <a href="https://trap.jp/author/mazrean/">
+        所属しているサークルtraPのブログ
+      </a>
     </li>
   </Basic>
 </div>
