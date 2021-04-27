@@ -39,12 +39,14 @@ for (const fileName of fileNames) {
   const file = readFileSync(filePath).toString()
   const content = fm<Attr>(file)
   const attr = content.attributes;
-  const body = content.body
-  const postPromise = (async () => {
-    const html = await mdparser(body)
-    return new Post(fileName.slice(0, -3), attr.title, attr.publishDate, html, attr.updateDate)
-  })()
-  postPromises.push(postPromise)
+  if (attr.isPublish) {
+    const body = content.body
+    const postPromise = (async () => {
+      const html = await mdparser(body)
+      return new Post(fileName.slice(0, -3), attr.title, attr.publishDate, html, attr.updateDate)
+    })()
+    postPromises.push(postPromise)
+  }
 }
 
 export const posts = Promise.all(postPromises).then(posts => {
