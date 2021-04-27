@@ -8,8 +8,8 @@ sections:
   path: posts
   label: Posts
   create: documents
-  match: "**/*.md"
-  new_doc_ext: ".md"
+  match: "*.md"
+  new_doc_ext: md
 upload_dir: static
 public_path: "/static"
 front_matter_path: ''
