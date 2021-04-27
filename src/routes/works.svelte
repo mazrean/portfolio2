@@ -11,6 +11,12 @@
 <div>
   <Basic title="Works" discription="">
     <li>
+      <a href="https://github.com/mazrean/separated-webshell">separated-webshell</a><br/>
+      ssh接続をdockerコンテナに振り分けるアプリケーションです。
+      CPCTF2021ユーザーごとに隔離されたWebshellを実現するために開発しました。
+      しっかりLICENCEなどを設定してOSSとして公開予定です。
+    </li>
+    <li>
       <a href="https://github.com/titech-cpp/sqlboiler">ORMジェネレーター</a><br/>
       GolangのORMのジェネレーターです。
       スキーマ駆動、データベース構造を利用して型をつけることで
