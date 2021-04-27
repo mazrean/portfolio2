@@ -20,5 +20,8 @@ fields:
 - type: list
   name: tags
   label: tags
+- name: isPublish
+  type: boolean
+  label: IsPublish
 pages:
 - posts/sapper-vercel-forestry.md
