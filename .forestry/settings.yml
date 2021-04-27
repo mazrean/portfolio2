@@ -16,9 +16,11 @@ front_matter_path: ''
 use_front_matter_path: false
 file_template: 'posts/:year:-:month:-:day:-:filename:'
 build:
-  preview_output_directory: __sapper__/export
+  preview_env:
+  - PORT=8080
+  preview_output_directory: __sapper__/dev
   install_dependencies_command: npm install
   preview_docker_image: forestryio/node:12
   mount_path: "/srv"
   working_dir: "/srv"
-  instant_preview_command: npm run export && npm run serve
+  instant_preview_command: npm run dev
