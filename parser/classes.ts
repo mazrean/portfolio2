@@ -1,6 +1,7 @@
 export class Attr {
   slug: string
   title: string
+  isPublish: boolean
   publishDate: string
   updateDate?: string
   constructor(slug: string, title: string, publishDate: string, updateDate?: string){

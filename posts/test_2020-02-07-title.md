@@ -1,5 +1,6 @@
 ---
 title: タイトルあああああああああああああああああああああああああああああああああああああああああああああ
+isPublish: true
 custom_slug: create-portfolio-and-blog-with-sapper-and-netlify-cms
 publishDate: '2020-02-07 20:36'
 updateDate: '2020-02-15 01:12'
