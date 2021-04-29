@@ -1,8 +1,8 @@
 ---
 title: Sapper+Vercel+Forestryでポートフォリオにブログ機能をつけた
 custom_slug: sapper_vercel_forestry_portfolio
-publishDate: 2021-04-28T00:00:00.000+09:00
-updateDate: 2021-04-29T00:00:00.000+09:00
+publishDate: 2021-04-30T00:00:00+09:00
+updateDate: 2021-04-30T00:00:00+09:00
 thumbnail: ''
 tags:
 - svelte
