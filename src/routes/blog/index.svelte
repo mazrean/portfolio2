@@ -1,12 +1,8 @@
 <script lang="ts" context="module">
-  export function preload(this: any) {
-    const posts: Promise<Post[]> = (async () => {
-      const res: any = await this.fetch(`/blog.json`);
-      return res.json();
-    })();
+  export async function preload() {
+    const posts: Post[] =  await this.fetch(`blog.json`).then((r: Response) => r.json())
     return {
       posts,
-      Shadow: (async () => (await import("svelte-loading-spinners")).Shadow)(),
     };
   }
 </script>
@@ -18,8 +14,7 @@
   import SubTitleUnderline from "../../components/SubTitleUnderline.svelte";
   import List from "../../components/List.svelte";
   import BlogItem from "../../components/BlogItem.svelte";
-  export let posts: Promise<Post[]>;
-  export let Shadow: Promise<any>;
+  export let posts: Post[];
 
   class Article extends Post {
     hover: boolean = false;
@@ -44,29 +39,14 @@
 
 <div class="wrapper">
   <SubTitleUnderline title="Blog" />
-
-  {#await Shadow then Shadow}
-    {#await posts}
-      <div class="loading">
-        <svelte:component
-          this={Shadow}
-          class="Shadow"
-          size="60"
-          color="#022b77"
-          unit="px"
-        />
-      </div>
-    {:then postList}
-      <List
-        items={article(postList)}
-        height={45}
-        lineWidth={98}
-        let:item={article}
-      >
-        <BlogItem {article} />
-      </List>
-    {/await}
-  {/await}
+  <List
+    items={article(posts)}
+    height={45}
+    lineWidth={98}
+    let:item={article}
+  >
+    <BlogItem {article} />
+  </List>
 </div>
 
 <style>
