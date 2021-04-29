@@ -18,13 +18,11 @@
   export let post: Promise<Post>;
   export let Shadow: Promise<any>;
 
-  onMount(() => {
-    document.querySelectorAll("a").forEach((a) => {
-      if (!a.hash || !document.querySelectorAll(a.hash).length) return;
-
-      a.href = window.location + a.hash;
-    });
-  });
+  onMount(async () => {
+    document.querySelectorAll('a[href^="#"]').forEach(
+      (x: HTMLAnchorElement) => (x.href = document.location + new URL(x.href).hash)
+    )
+  })
   function title(post: Post): string {
     document.title = post.title + " - mazrean-portfolio/blog";
     return post.title;
