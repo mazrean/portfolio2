@@ -38,7 +38,7 @@ isPublish: true
 
 という2つの考えから、markdownパーサーとしてremarkを利用することにしました。
 
-このブログで指しているプラグインは https://github.com/mazrean/portfolio2/blob/eec04ee40b/parser/md-parser.ts#L13-L18 で、GitHubで使えるMarkdown記法に加え、$\\KaTeX$や脚注が使えるようになっています。
+このブログで指しているプラグインは https://github.com/mazrean/portfolio2/blob/eec04ee40b/parser/md-parser.ts#L13-L18 で、GitHubで使えるMarkdown記法に加え、$\KaTeX$や脚注が使えるようになっています。
 
 ## デプロイ先
 
@@ -67,16 +67,12 @@ Git型のCMSの中でそれなりに人気があるのは Netlify CMS、Forestry
 
 # 実装
 
-このポートフォリオのリポジトリは https://github.com/mazrean/portfolio2 です。
-
-アプリケーション側の実装は https://n-ari.tech/blog/2020-02-06-create-portfolio-and-blog-with-sapper-and-netlify-cms とそのGitHubリポジトリを参考にさせていただきました。記事から変更した点は
+このポートフォリオのリポジトリは https://github.com/mazrean/portfolio2 です。アプリケーション側の実装は https://n-ari.tech/blog/2020-02-06-create-portfolio-and-blog-with-sapper-and-netlify-cms とそのGitHubリポジトリを参考にさせていただきました。記事から変更した点は
 
 * TypeScript化
 * markdownパーサーをmarkedからremarkへ
 
-程度です。
-
-Forestryの設定は、公式のチュートリアルに乗っていけば基本的に問題ありません。ただ、ForestryはSapperのテンプレートがないので、Previewのコマンドなどは基本的に自分で設定していく必要があるのは注意が必要です。
+程度です。Forestryの設定は、公式のチュートリアルに乗っていけば基本的に問題ありません。ただ、ForestryはSapperのテンプレートがないので、Previewのコマンドなどは基本的に自分で設定していく必要があるのは注意が必要です。
 
 # 気になっている点
 
@@ -90,7 +86,7 @@ Forestryの設定は、公式のチュートリアルに乗っていけば基本
 
 ## footnoteのワークアラウンド
 
-https://github.com/sveltejs/sapper/issues/904 でもあげられている通り、Sapperでは`<basehef="/">`が必須であるため、フラグメント識別子(\`#\`)がそのままリンクを`#hoge`のように指定すると`/#hoge`に飛んでしまい正常に機能しません。リンクを表示時に書き換えるという黒魔術が必要になるのですが、markdownをパースしたブログ記事がhtmlのDOMに入るのはonMountの後なので https://github.com/sveltejs/sapper/issues/904#issuecomment-532975259 の通りではfootnoteのリンクの修正ではうまくいきません。
+https://github.com/sveltejs/sapper/issues/904 でもあげられている通り、Sapperでは`<basehef="/">`が必須であるため、フラグメント識別子(`#`)がそのままリンクを`#hoge`のように指定すると`/#hoge`に飛んでしまい正常に機能しません。リンクを表示時に書き換えるという黒魔術が必要になるのですが、markdownをパースしたブログ記事がhtmlのDOMに入るのはonMountの後なので https://github.com/sveltejs/sapper/issues/904#issuecomment-532975259 の通りではfootnoteのリンクの修正ではうまくいきません。
 
 ```js
 onMount(() => {
@@ -104,10 +100,10 @@ onMount(() => {
 })
 ```
 
-というようにtimeoutで送らせてurlの書き換えを行うという暫定対処をしています。当然これではmountから1秒以内にmarkdownがレンダリングされなければリンクが壊れるので、いずれ綺麗な対応をしたいです[^1](%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E3%81%93%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%A2%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%82%92%E3%81%97%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%84%E3%81%A8%E3%81%84%E3%81%86%E3%81%AE%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8C%E2%80%A6)。
+というようにtimeoutで送らせてurlの書き換えを行うという暫定対処をしています。当然これではmountから1秒以内にmarkdownがレンダリングされなければリンクが壊れるので、いずれ綺麗な対応をしたいです[^1]。
 
 # 感想
 
-クライアントを触るのがかなり久しぶりだったので、主にfootnoteのあたりで苦しみましたが、Svelte自体はだいぶ書きやすかったように感じました。また、今後Sapperの後継としてSvelteKitが出るそうなので、安定したらそちらに切り替えるのもやってみたいと考えています[^2](footnote%E3%81%AE%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%A2%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%AE%E3%82%82%E9%A1%98%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E2%80%A6)。また、自分はtraP内でRSS購読Botを開発し運用しているため、RSS機能をつけてtraPの部内チャットtraQに記事の更新を流したいという野望もあったりします。
+クライアントを触るのがかなり久しぶりだったので、主にfootnoteのあたりで苦しみましたが、Svelte自体はだいぶ書きやすかったように感じました。また、今後Sapperの後継としてSvelteKitが出るそうなので、安定したらそちらに切り替えるのもやってみたいと考えています[^2]。また、自分はtraP内でRSS購読Botを開発し運用しているため、RSS機能をつけてtraPの部内チャットtraQに記事の更新を流したいという野望もあったりします。
 
 今後も機能追加をしていきたいと考えているのでお楽しみに。
