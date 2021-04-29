@@ -12,7 +12,7 @@ const postMap = posts.then(posts => {
 
 export async function get(req: express.Request, res: express.Response, _next: express.NextFunction) {
   const { slug } = req.params;
-  const posts = await postMap
+  const posts = await postMap;
 
 	if (posts.has(slug)) {
 		res.writeHead(200, {

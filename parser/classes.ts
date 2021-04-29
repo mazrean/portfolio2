@@ -19,9 +19,9 @@ export class Post extends Attr {
   constructor(slug: string, title: string, publishDate: string, html: string, updateDate?: string){
     super(slug, title, publishDate, updateDate)
     if (updateDate) {
-      this.date = updateDate
+      this.date = new Date(updateDate).toLocaleString('ja', {timeZone: 'Asia/Tokyo'})
     } else {
-      this.date = publishDate
+      this.date = new Date(publishDate).toLocaleString('ja', {timeZone: 'Asia/Tokyo'})
     }
     this.html = html
     this.link = `blog/${slug}`;
