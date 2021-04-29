@@ -30,23 +30,23 @@ isPublish: false
 
 ## markdownパーサー
 
-真っ先に考えたのはtraPで使っているチャットtraQが使っている\[markdown-it\](https://github.com/markdown-it/markdown-it)でした。こちらを使えば
+真っ先に考えたのはtraPで使っているチャットtraQが使っている[markdown-it](https://github.com/markdown-it/markdown-it)でした。こちらを使えば
 
 * traQで使い慣れた記法がそのまま使える
 * 使った経験があるため、実装が楽
 
-というメリットがありました。しかし、今回は\[remark\](https://github.com/remarkjs/remark)を使用しました。remarkはmarkdownを抽象構文木へ変換後、markdownの抽象構文木からhtmlの抽象構文木へ変換しhtmlとするという、抽象構文木を利用する変換方法が特徴のmarkdownパーサーです。変換の過程に様々なプラグインを入れることで　markdownを容易に拡張できます。今回は
+というメリットがありました。しかし、今回は[remark](https://github.com/remarkjs/remark)を使用しました。remarkはmarkdownを抽象構文木へ変換後、markdownの抽象構文木からhtmlの抽象構文木へ変換しhtmlとするという、抽象構文木を利用する変換方法が特徴のmarkdownパーサーです。変換の過程に様々なプラグインを入れることで　markdownを容易に拡張できます。今回は
 
 * 拡張の容易さ
 * せっかくの機会なので普段使っていないものに触りたい
 
 という2つの考えから、markdownパーサーとしてremarkを利用することにしました。
 
-このブログで指しているプラグインは https://github.com/mazrean/portfolio2/blob/eec04ee40b/parser/md-parser.ts#L13-L18 で、GitHubで使えるMarkdown記法に加え、$\\KaTeX$や脚注が使えるようになっています。
+このブログで指しているプラグインは https://github.com/mazrean/portfolio2/blob/eec04ee40b/parser/md-parser.ts#L13-L18 で、GitHubで使えるMarkdown記法に加え、$\KaTeX$や脚注が使えるようになっています。
 
 ## デプロイ先
 
-ポートフォリオ自体は当初\[Netlify\](https://www.netlify.com/)にデプロイしていました。しかし、Netlifyは日本国内にサーバーを持たないため、日本からのリクエストに対するレスポンスの速度が非常に遅くなってしまっていました。そこで、ブログ機能をつける際にデプロイ先を日本国内にサーバーを持つ\[Vercel\](https://vercel.com/)に変更しました。これによって、大幅に応答速度が速くなり表示までの速度が改善されました。
+ポートフォリオ自体は当初[Netlify](https://www.netlify.com/)にデプロイしていました。しかし、Netlifyは日本国内にサーバーを持たないため、日本からのリクエストに対するレスポンスの速度が非常に遅くなってしまっていました。そこで、ブログ機能をつける際にデプロイ先を日本国内にサーバーを持つ[Vercel](https://vercel.com/)に変更しました。これによって、大幅に応答速度が速くなり表示までの速度が改善されました。
 
 ## CMS
 
@@ -90,42 +90,32 @@ Forestryの設定は、公式のチュートリアルに乗っていけば基本
 
 下記の画像のように、Forestryはsaveの度に新しいcommitを打ちます。そのため、普通に使っているとコミットログが荒れてしまい、開発のコミットが押し流されてしまいます。
 
-!\[\](/posts/2021-04-29-2021-04-29-20-43-58.png)
+![](/posts/2021-04-29-2021-04-29-20-43-58.png)
 
 ## footnoteのワークアラウンド
 
-https://github.com/sveltejs/sapper/issues/904 でもあげられている通り、Sapperでは\``basehef="/">``が必須であるため、フラグメント識別子(\`#\`)がそのままリンクを\`#hoge\`のように指定すると\`/#hoge\`に飛んでしまい正常に機能しません。リンクを表示時に書き換えるという黒魔術が必要になるのですが、markdownをパースしたブログ記事がhtmlのDOMに入るのはonMountの後なので　https://github.com/sveltejs/sapper/issues/904#issuecomment-532975259 の通りではfootnoteのリンクの修正ではうまくいきません。
+https://github.com/sveltejs/sapper/issues/904 でもあげられている通り、Sapperでは`<basehef="/">`が必須であるため、フラグメント識別子(\`#\`)がそのままリンクを`#hoge`のように指定すると`/#hoge`に飛んでしまい正常に機能しません。リンクを表示時に書き換えるという黒魔術が必要になるのですが、markdownをパースしたブログ記事がhtmlのDOMに入るのはonMountの後なので https://github.com/sveltejs/sapper/issues/904#issuecomment-532975259 の通りではfootnoteのリンクの修正ではうまくいきません。
 
-\~\~\~js
-
+~~~js
 onMount(() => {
-
   setTimeout(() => {
-
-    document.querySelectorAll('a\[href^="#"\]').forEach(
-
+    document.querySelectorAll('a[href^="#"]').forEach(
       (x: HTMLAnchorElement) => {
-
         x.href = document.location.pathname + new URL(x.href).hash
-
       }
-
     )
+  })
+})
+~~~
 
-  }
-
-}
-
-\~\~\~
-
-というようにtimeoutで送らせてurlの書き換えを行うという暫定対処をしています。当然これではmountから1秒以内にmarkdownがレンダリングされなければリンクが壊れるので、いずれ綺麗な対応をしたいです\[^1\]。
+というようにtimeoutで送らせてurlの書き換えを行うという暫定対処をしています。当然これではmountから1秒以内にmarkdownがレンダリングされなければリンクが壊れるので、いずれ綺麗な対応をしたいです[^1]。
 
 # 感想
 
-クライアントを触るのがかなり久しぶりだったので、主にfootnoteのあたりで苦しみましたが、Svelte自体はだいぶ書きやすかったように感じました。また、今後Sapperの後継としてSvelteKitが出るそうなので、安定したらそちらに切り替えるのもやってみたいと考えています\[^2\]。また、自分はtraP内でRSS購読Botを開発し運用しているため、RSS機能をつけてtraPの部内チャットtraQに記事の更新を流したいという野望もあったりします。
+クライアントを触るのがかなり久しぶりだったので、主にfootnoteのあたりで苦しみましたが、Svelte自体はだいぶ書きやすかったように感じました。また、今後Sapperの後継としてSvelteKitが出るそうなので、安定したらそちらに切り替えるのもやってみたいと考えています[^2]。また、自分はtraP内でRSS購読Botを開発し運用しているため、RSS機能をつけてtraPの部内チャットtraQに記事の更新を流したいという野望もあったりします。
 
 今後も機能追加をしていきたいと考えているのでお楽しみに。
 
-\[^1\]: そもそもこのようなワークアラウンドをしたくないというのはありますが…
+[^1]: そもそもこのようなワークアラウンドをしたくないというのはありますが…
 
-\[^2\]: footnoteのワークアラウンドが必要なくなるのも願っています…
+[^2]: footnoteのワークアラウンドが必要なくなるのも願っています…
