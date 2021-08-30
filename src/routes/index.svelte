@@ -41,21 +41,20 @@
     </li>
   </Basic>
   <Basic title="Performance" discription="">
-    <li>ICTSC2019本戦にチーム「stohm」で出場し、9位でした</li>
+    <li>ISUCON11に「手が3本あるテディーベア」として参加し、予選を通過しました</li>
     <li>ICTSC2020本戦にチーム「xxNaNxx」で出場し、8位でした</li>
-    <li>第16回情報危機管理コンテスト 一次予選を通過しました</li>
-    <li>セキュリティキャンプ全国大会2020オンラインに参加しました</li>
+    <li>ICTSC2019本戦にチーム「stohm」で出場し、9位でした</li>
     <li>mixi Bug Shooting Challenge #5 ONLINEで優勝しました</li>
+    <li>セキュリティキャンプ全国大会2020オンラインに参加しました</li>
     <li><a href="https://trap.jp/post/1263/">CPCTF2021</a>で作問・インフラ・Webshell開発を担当しました</li>
   </Basic>
-  <Basic title="Skills" discription="上にあるものほど得意です。">
+  <Basic title="Skills" discription="">
     <li>Golang</li>
-    <li>MySQL,docker</li>
     <li>Rust</li>
+    <li>terraform/AWS/GCP</li>
+    <li>Kubernetes</li>
     <li>Svelte</li>
-    <li>HTML/CSS/JavaScript</li>
     <li>React.js/Vue.js</li>
-    <li>C#/F#</li>
   </Basic>
   <Basic title="Interest" discription="">
     <li>サーバーサイド</li>
