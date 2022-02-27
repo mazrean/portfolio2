@@ -41,9 +41,8 @@
     </li>
   </Basic>
   <Basic title="Performance" discription="">
-    <li>ISUCON11に「手が3本あるテディーベア」として参加し、予選を通過しました</li>
-    <li>ICTSC2020本戦にチーム「xxNaNxx」で出場し、8位でした</li>
-    <li>ICTSC2019本戦にチーム「stohm」で出場し、9位でした</li>
+    <li>ISUCON11に「手が3本あるテディーベア」として参加し、本戦に出場しました</li>
+    <li>ICTSC 2021 冬の陣にチーム「Windows 11へのアップグレードオファーは最終段階に入りました」で出場し、3位でした</li>
     <li>mixi Bug Shooting Challenge #5 ONLINEで優勝しました</li>
     <li>セキュリティキャンプ全国大会2020オンラインに参加しました</li>
     <li><a href="https://trap.jp/post/1263/">CPCTF2021</a>で作問・インフラ・Webshell開発を担当しました</li>
