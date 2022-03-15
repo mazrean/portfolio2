@@ -11,16 +11,30 @@
 <div>
   <Basic title="Works" discription="">
     <li>
-      <a href="https://github.com/mazrean/separated-webshell">separated-webshell</a><br/>
-      ssh接続をdockerコンテナに振り分けるアプリケーションです。
-      CPCTF2021ユーザーごとに隔離されたWebshellを実現するために開発しました。
-      しっかりLICENCEなどを設定してOSSとして公開予定です。
+      <a href="https://github.com/mazrean/genorm">GenORM</a><br />
+      Go言語のSQL Builderです。 1.18で入ったジェネリクスを利用して、型による制約でバグを防止するのが特徴です。<br
+      />
+      ドキュメント:
+      <a href="https://mazrean.github.io/genorm-docs/ja/">
+        https://mazrean.github.io/genorm-docs/ja/
+      </a><br />
+      Zenn:
+      <a href="https://zenn.dev/mazrean/articles/c795c04e4837b4">
+        https://zenn.dev/mazrean/articles/c795c04e4837b4
+      </a>
     </li>
     <li>
-      <a href="https://github.com/titech-cpp/sqlboiler">ORMジェネレーター</a><br/>
-      GolangのORMのジェネレーターです。
-      スキーマ駆動、データベース構造を利用して型をつけることで
-      コンパイルが通るならば正しいSQLとなる機能などが特徴です。
+      <a href="https://github.com/mazrean/separated-webshell">
+        separated-webshell
+      </a><br />
+      ssh接続をdockerコンテナに振り分けるアプリケーションです。 CPCTF2021でユーザーごとに隔離されたWebshellを実現するために開発しました。
+    </li>
+    <li>
+      <a href="https://github.com/traPtitech/trap-collection-server">
+        traP&ensp;Collection
+      </a><br />
+      traPで開発されたゲームの管理・文化祭での公開・販売を行うゲームランチャーです。
+      2021年の冬コミで販売しました。
     </li>
     <li>
       <a href="https://hackason20_winter_2.trap.show/customtheme-server/">
@@ -28,11 +42,6 @@
       </a><br />
       サークルの部内ハッカソンで1週間で作った、部内チャットツールtraQのテーマ管理ツールです。自分はサーバーサイドを担当していました。
     </li>
-    <li>
-      <a href="https://github.com/traPtitech/trap-collection-server"
-        >traP&ensp;Collection</a
-      ><br />
-      traPで開発されたゲームの管理・文化祭の公開・販売を行うゲームランチャーです。
   </Basic>
 </div>
 
