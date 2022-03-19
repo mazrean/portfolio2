@@ -5,6 +5,11 @@
   let cssWidth: string = String(("date:" + date).length / 2) + "em";
 </script>
 
+<a rel="prefetch" href={article.link}>
+  <span class="title">{article.title}</span>
+  <span class="date" style="--width: {cssWidth}">date:{date}</span>
+</a>
+
 <style>
   a {
     height: 100%;
@@ -24,8 +29,3 @@
     padding: 0 5px;
   }
 </style>
-
-<a rel="prefetch" href={article.link}>
-  <span class="title">{article.title}</span>
-  <span class="date" style="--width: {cssWidth}">date:{date}</span>
-</a>

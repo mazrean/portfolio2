@@ -37,9 +37,7 @@
   <ul class:menu>
     {#each pages as page, i (page.name)}
       <li
-        class="page_list {segment === page.segment
-          ? 'selected'
-          : ''}
+        class="page_list {segment === page.segment ? 'selected' : ''}
           {page.hover ? 'mouseover' : ''}"
         class:menu
         on:click={page.go}
@@ -116,6 +114,7 @@
   span.menu {
     visibility: visible;
     width: 100%;
+    white-space: nowrap;
   }
 
   .m {
