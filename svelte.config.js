@@ -1,5 +1,5 @@
 import path from 'path';
-import adapter from '@sveltejs/adapter-static';
+import vercel from '@sveltejs/adapter-vercel';
 import sveltePreprocess from 'svelte-preprocess';
 import autoprefixer from 'autoprefixer';
 
@@ -20,7 +20,7 @@ const config = {
   preprocess: preprocess,
 
   kit: {
-    adapter: adapter(),
+    adapter: vercel(),
     vite: {
       resolve: {
         alias: {
