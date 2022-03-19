@@ -3,6 +3,10 @@
   export let title: string;
 </script>
 
+<div class="title">
+  <h2>{title}</h2>
+</div>
+
 <style>
   h2 {
     max-height: 40px;
@@ -20,7 +24,3 @@
     margin: 0 auto;
   }
 </style>
-
-<div class="title">
-  <h2>{title}</h2>
-</div>

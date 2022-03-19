@@ -3,6 +3,8 @@
   export let title: string;
 </script>
 
+<h1>{title}</h1>
+
 <style>
   h1 {
     font-size: 24px;
@@ -11,5 +13,3 @@
     margin-bottom: 10px;
   }
 </style>
-
-<h1>{title}</h1>
