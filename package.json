@@ -4,10 +4,9 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy --entry \"/ /works /blog\"",
-    "start": "node __sapper__/build",
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "start": "node build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run"
