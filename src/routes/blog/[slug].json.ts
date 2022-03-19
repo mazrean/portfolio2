@@ -1,6 +1,5 @@
-import type { Post } from 'parser/classes'
-import { posts } from 'parser/articles'
-import type express from 'express'
+import { posts } from 'src/parser/articles'
+import type { RequestHandler } from "@sveltejs/kit";
 
 const postMap = posts.then(posts => {
   let postMap = new Map<string,string>()
@@ -10,23 +9,21 @@ const postMap = posts.then(posts => {
   return postMap
 })
 
-export async function get(req: express.Request, res: express.Response, _next: express.NextFunction) {
-  const { slug } = req.params;
+export const get: RequestHandler = async ({ params }) => {
+  const { slug } = params;
   const posts = await postMap;
 
 	if (posts.has(slug)) {
-		res.writeHead(200, {
-			'Content-Type': 'application/json'
-		})
+		return {
+			status: 200,
+			body: posts.get(slug)
+		}
+	}
 
-		res.end(posts.get(slug))
-	} else {
-		res.writeHead(404, {
-			'Content-Type': 'application/json'
-		})
-
-		res.end(JSON.stringify({
+	return {
+		status: 404,
+		body: {
 			message: `Not found`
-		}))
+		}
 	}
 }

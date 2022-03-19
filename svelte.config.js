@@ -1,3 +1,4 @@
+import path from 'path';
 import adapter from '@sveltejs/adapter-static';
 import sveltePreprocess from 'svelte-preprocess';
 import autoprefixer from 'autoprefixer';
@@ -20,10 +21,14 @@ const config = {
 
   kit: {
     adapter: adapter(),
-
-    // hydrate the <div id="svelte"> element in src/app.html
-    target: '#svelte'
-  }
+    vite: {
+      resolve: {
+        alias: {
+          "src": path.resolve("./src"),
+        },
+      },
+    },
+  },
 };
 
 export default config;

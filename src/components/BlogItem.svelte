@@ -5,7 +5,7 @@
   let cssWidth: string = String(("date:" + date).length / 2) + "em";
 </script>
 
-<a rel="prefetch" href={article.link}>
+<a sveltekit:prefetch href={article.link}>
   <span class="title">{article.title}</span>
   <span class="date" style="--width: {cssWidth}">date:{date}</span>
 </a>

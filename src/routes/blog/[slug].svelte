@@ -1,32 +1,26 @@
 <script lang="ts" context="module">
-  export function preload(this: any, { params }: { params: any }) {
+  import type { Load } from "@sveltejs/kit";
+  export const load: Load = async ({ params, fetch }) => {
     const post: Promise<Post> = (async () => {
-      const res = await this.fetch(`/blog/${params.slug}.json`);
+      const res = await fetch(`/blog/${params.slug}.json`);
       return res.json();
     })();
     return {
-      post,
-      Shadow: (async () => (await import("svelte-loading-spinners")).Shadow)(),
+      props: {
+        post,
+        Shadow: (async () =>
+          (await import("svelte-loading-spinners")).Shadow)(),
+      },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
+  import type { Post } from "src/parser/classes";
   import SubTitle from "../../components/SubTitle.svelte";
-  import type { Post } from "parser/classes";
-  import { onMount } from "svelte";
   export let post: Promise<Post>;
   export let Shadow: Promise<any>;
 
-  onMount(() => {
-    setTimeout(() => {
-      document
-        .querySelectorAll('a[href^="#"]')
-        .forEach((x: HTMLAnchorElement) => {
-          x.href = document.location.pathname + new URL(x.href).hash;
-        });
-    }, 1000);
-  });
   function title(post: Post): string {
     document.title = post.title + " - mazrean-portfolio/blog";
     return post.title;
@@ -92,7 +86,7 @@
 
   @import url("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css");
   @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css");
-  :global(.content) {
+  .content {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     line-height: 1.2;
@@ -173,13 +167,25 @@
       font-size: 1.25em;
     }
     :global(h4) {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      line-height: 1.25;
       font-size: 1em;
     }
     :global(h5) {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      line-height: 1.25;
       font-size: 0.875em;
       transform: rotate(0.03deg);
     }
     :global(h6) {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      line-height: 1.25;
       font-size: 0.85em;
       transform: rotate(0.03deg);
       color: $h6-color;
@@ -227,6 +233,21 @@
 
     :global(ol) {
       list-style: decimal;
+      padding-left: 2em;
+      margin-top: 0;
+      margin-bottom: 8px;
+      word-break: break-all;
+      :global(ol) {
+        list-style-type: lower-roman;
+      }
+      :global(ol),
+      :global(ul) {
+        margin-top: 0;
+        margin-bottom: 0;
+        :global(ol) {
+          list-style-type: lower-alpha;
+        }
+      }
     }
     :global(ul) {
       list-style: disc;
