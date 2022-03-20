@@ -1,0 +1,7 @@
+{
+  "functions": {
+    ".vercel/functions/render/index": {
+      "includeFiles": "posts/**"
+    }
+  }
+}
