@@ -24,9 +24,8 @@
       </a>
     </li>
     <li>
-      <a href="https://github.com/mazrean/separated-webshell">
-        separated-webshell
-      </a><br />
+      <a href="https://github.com/mazrean/ssh-separator"> ssh-separator </a>
+      <br />
       ssh接続をdockerコンテナに振り分けるアプリケーションです。 CPCTF2021でユーザーごとに隔離されたWebshellを実現するために開発しました。
     </li>
     <li>
