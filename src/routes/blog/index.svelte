@@ -1,6 +1,8 @@
 <script lang="ts" context="module">
   export async function preload() {
-    const posts: Post[] =  await this.fetch(`blog.json`).then((r: Response) => r.json())
+    const posts: Post[] = await this.fetch(`blog.json`).then((r: Response) =>
+      r.json()
+    );
     return {
       posts,
     };
@@ -39,22 +41,12 @@
 
 <div class="wrapper">
   <SubTitleUnderline title="Blog" />
-  <List
-    items={article(posts)}
-    height={45}
-    lineWidth={98}
-    let:item={article}
-  >
+  <List items={article(posts)} height={45} lineWidth={98} let:item={article}>
     <BlogItem {article} />
   </List>
 </div>
 
 <style>
-  div.loading {
-    width: 60px;
-    height: 60px;
-    margin: 90px auto;
-  }
   div.wrapper {
     padding: 0 10px;
   }

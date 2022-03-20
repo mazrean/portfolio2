@@ -17,7 +17,14 @@
         on:mouseover={() => {
           item.hover = true;
         }}
+        on:focus={() => {
+          item.hover = true;
+        }}
         on:mouseout={() => {
+          item.hover = false;
+          item.mouseDown = false;
+        }}
+        on:blur={() => {
           item.hover = false;
           item.mouseDown = false;
         }}

@@ -6,12 +6,13 @@ import * as sapper from '@sapper/server';
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
+const compressionMiddleware: any = compression({ threshold: 0 });
+const sapperMiddleware: any = sapper.middleware()
+
 polka() // You can also use Express
 	.use(
-		compression({ threshold: 0 }),
+		compressionMiddleware,
 		sirv('static', { dev }),
-		sapper.middleware()
+		sapperMiddleware,
 	)
-	.listen(PORT, (err: any) => {
-		if (err) console.log('error', err);
-	});
+	.listen(PORT);
