@@ -20,13 +20,13 @@
 
   onMount(() => {
     setTimeout(() => {
-      document.querySelectorAll('a[href^="#"]').forEach(
-        (x: HTMLAnchorElement) => {
-          x.href = document.location.pathname + new URL(x.href).hash
-        }
-      )
-    }, 1000)
-  })
+      document
+        .querySelectorAll('a[href^="#"]')
+        .forEach((x: HTMLAnchorElement) => {
+          x.href = document.location.pathname + new URL(x.href).hash;
+        });
+    }, 1000);
+  });
   function title(post: Post): string {
     document.title = post.title + " - mazrean-portfolio/blog";
     return post.title;
@@ -148,13 +148,19 @@
       overflow: hidden;
     }
 
-    :global(h1, h2, h3, h4, h5, h6) {
+    :global(h1),
+    :global(h2),
+    :global(h3),
+    :global(h4),
+    :global(h5),
+    :global(h6) {
       margin-top: 12px;
       margin-bottom: 8px;
       font-weight: bold;
       line-height: 1.25;
     }
-    :global(h1, h2) {
+    :global(h1),
+    :global(h2) {
       padding-bottom: 0.3em;
     }
     :global(h1) {
@@ -225,7 +231,8 @@
     :global(ul) {
       list-style: disc;
     }
-    :global(ol, ul) {
+    :global(ol),
+    :global(ul) {
       padding-left: 2em;
       margin-top: 0;
       margin-bottom: 8px;

@@ -44,7 +44,13 @@
         on:mouseover={() => {
           page.hover = true;
         }}
+        on:focus={() => {
+          page.hover = true;
+        }}
         on:mouseout={() => {
+          page.hover = false;
+        }}
+        on:blur={() => {
           page.hover = false;
         }}
       >

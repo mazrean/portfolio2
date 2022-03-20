@@ -1,5 +1,6 @@
 import { Post, Attr } from './classes';
-import {readdirSync, readFileSync, statSync, Stats} from 'fs';
+import {readdirSync, readFileSync, statSync } from 'fs';
+import type { Stats } from 'fs';
 import path from 'path';
 import mdparser from './md-parser';
 import fm from 'front-matter';
