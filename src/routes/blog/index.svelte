@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import type { Load } from "@sveltejs/kit";
   export const load: Load = async ({ fetch }) => {
-    const posts: Post[] = await fetch(`blog.json`).then((r: Response) =>
+    const posts: Post[] = await fetch(`/blog.json`).then((r: Response) =>
       r.json()
     );
     return {

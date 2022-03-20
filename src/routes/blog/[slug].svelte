@@ -1,10 +1,9 @@
 <script lang="ts" context="module">
   import type { Load } from "@sveltejs/kit";
   export const load: Load = async ({ params, fetch }) => {
-    const post: Promise<Post> = (async () => {
-      const res = await fetch(`/blog/${params.slug}.json`);
-      return res.json();
-    })();
+    const post: Promise<Post> = await fetch(`/blog/${params.slug}.json`).then(
+      (res) => res.json()
+    );
     return {
       props: {
         post,
