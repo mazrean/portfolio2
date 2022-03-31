@@ -3,7 +3,7 @@
   import Basic from "../components/Basic.svelte";
   const today = new Date(new Date().toLocaleString({ timeZone: 'Asia/Tokyo' }));
   const grade =
-    today.getMonth() >= 4
+    today.getMonth() >= 3
       ? today.getFullYear() - 2018
       : today.getFullYear() - 2019;
   const strGrade = grade > 4 ? `修士${grade - 4}年` : `学部${grade}年`;
