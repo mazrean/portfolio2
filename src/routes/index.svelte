@@ -1,7 +1,7 @@
 <script lang="ts">
   // @ts-check
   import Basic from "../components/Basic.svelte";
-  const today = new Date();
+  const today = new Date(new Date().toLocaleString({ timeZone: 'Asia/Tokyo' }));
   const grade =
     today.getMonth() >= 4
       ? today.getFullYear() - 2018
