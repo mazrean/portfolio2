@@ -27,7 +27,7 @@
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "sirv": "^2.0.2",
-    "svelte-loading-spinners": "^0.1.7",
+    "svelte-loading-spinners": "^0.3.4",
     "unified": "^10.1.2"
   },
   "devDependencies": {
