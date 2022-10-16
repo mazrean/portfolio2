@@ -1,4 +1,4 @@
-import { goto } from "@sapper/app";
+import { goto } from '$app/navigation';
 
 export class ListItem implements ListItem {
   private readonly link: string

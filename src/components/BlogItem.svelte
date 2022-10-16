@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { Post } from "parser/classes";
+  import type { Post } from "src/parser/classes";
   export let article: Post;
   let date: string = article.date.split(" ")[0];
   let cssWidth: string = String(("date:" + date).length / 2) + "em";
 </script>
 
-<a rel="prefetch" href={article.link}>
+<a sveltekit:prefetch href={article.link}>
   <span class="title">{article.title}</span>
   <span class="date" style="--width: {cssWidth}">date:{date}</span>
 </a>

@@ -1,18 +1,20 @@
 <script lang="ts" context="module">
-  export async function preload() {
-    const posts: Post[] = await this.fetch(`blog.json`).then((r: Response) =>
+  import type { Load } from "@sveltejs/kit";
+  export const load: Load = async ({ fetch }) => {
+    const posts: Post[] = await fetch(`/blog.json`).then((r: Response) =>
       r.json()
     );
     return {
-      posts,
+      props: {
+        posts,
+      },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
-  // @ts-check
-  import { Post } from "parser/classes";
-  import { goto } from "@sapper/app";
+  import { Post } from "src/parser/classes";
+  import { goto } from "$app/navigation";
   import SubTitleUnderline from "../../components/SubTitleUnderline.svelte";
   import List from "../../components/List.svelte";
   import BlogItem from "../../components/BlogItem.svelte";

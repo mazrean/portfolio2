@@ -1,7 +1,7 @@
 {
-  "rewrites": [
-    { "source": "/works", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/blog/(.*)", "destination": "/index.html" }
-  ]
+  "functions": {
+    ".vercel/functions/render/index": {
+      "includeFiles": "posts/**"
+    }
+  }
 }

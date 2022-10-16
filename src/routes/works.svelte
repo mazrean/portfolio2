@@ -1,6 +1,5 @@
 <script lang="ts">
   // @ts-checks
-  import type { space } from "svelte/internal";
   import Basic from "../components/Basic.svelte";
 </script>
 
