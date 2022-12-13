@@ -43,7 +43,7 @@
     "@rollup/plugin-typescript": "^9.0.2",
     "@tsconfig/svelte": "^3.0.0",
     "@types/compression": "^1.7.2",
-    "@types/node": "^18.11.12",
+    "@types/node": "^18.11.13",
     "@types/polka": "^0.5.4",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
