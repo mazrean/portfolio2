@@ -24,5 +24,5 @@ fields:
   type: boolean
   label: IsPublish
 pages:
+- posts/2022.md
 - posts/sapper-vercel-forestry.md
-- posts/web-speed-hackathon-2021-mini.md
