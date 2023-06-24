@@ -35,12 +35,6 @@
       traPで開発されたゲームの管理・文化祭での公開・販売を行うゲームランチャーです。
       2021年の冬コミで販売しました。
     </li>
-    <li>
-      <a href="https://hackason20_winter_2.trap.show/customtheme-server/">
-        Qtheme
-      </a><br />
-      サークルの部内ハッカソンで1週間で作った、部内チャットツールtraQのテーマ管理ツールです。自分はサーバーサイドを担当していました。
-    </li>
   </Basic>
 </div>
 
